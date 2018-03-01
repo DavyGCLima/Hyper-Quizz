@@ -1,8 +1,12 @@
 package com.example.davy.projetoic;
 
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -13,10 +17,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
+
+import java.util.ArrayList;
 
 public class QuestoesActivity extends AppCompatActivity {
 
@@ -87,22 +99,28 @@ public class QuestoesActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class questsFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {
+        RecyclerView mRecyclerView;
+        private OptionsQuestAdapter mAdapter;
+
+        private ListView listQuests;
+        int num;
+
+        public questsFragment() {
         }
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static questsFragment newInstance(int sectionNumber) {
+            questsFragment fragment = new questsFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -113,14 +131,61 @@ public class QuestoesActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_questoes, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.txtquest);
-            textView.setText(getString(R.string.txtQuestao, getArguments().getInt(ARG_SECTION_NUMBER)));
+            TextView numberQuest = (TextView) rootView.findViewById(R.id.txtquest);
+            numberQuest.setText("Questão: " + getArguments().getInt(ARG_SECTION_NUMBER));
+            TextView quest = (TextView) rootView.findViewById(R.id.textQuestao);
+            quest.setText("Se sua aplicação tem todas as perguntas embarcadas no projeto (offline), você pode, por exemplo, criar um Array de Objetos e, a cada pergunta respondida, atualiza a tela com a próxima pergunta, armazenando a resposta do usuário em um Array separado. ");
 
-            TextView questao = (TextView) rootView.findViewById(R.id.textQuestao);
-            questao.setText("CORPO DA QUESTÃO XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" +
-                    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+            listQuests = rootView.findViewById(R.id.list_quests);
+            listQuests.setAdapter(new OptionsQuestAdapter(getContext()));
+            listQuests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                //seleciona a resposta
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String s = (String) adapterView.getAdapter().getItem(i);
+                    Toast.makeText(getContext(), "Selecionado " + s, Toast.LENGTH_SHORT).show();
+                }
+            });
             return rootView;
         }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+
+        }
+
+        /*private void setupRecycler(View rootView) {
+
+            mRecyclerView = (RecyclerView) rootView.findViewById(R.id.list_quests);
+            // Configurando o gerenciador de layout para ser uma lista.
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            // Adiciona o adapter que irá anexar os objetos à lista.
+            // Está sendo criado com lista vazia, pois será preenchida posteriormente.
+            mAdapter = new OptionsQuestAdapter(getContext(), new ArrayList<>(0));
+            mRecyclerView.setAdapter(mAdapter);
+
+            // Configurando um dividr entre linhas, para uma melhor visualização.
+            mRecyclerView.addItemDecoration(
+                    new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
+            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickLIstener(getContext(), mRecyclerView ,new RecyclerItemClickLIstener.OnItemClickListener() {
+                        @Override public void onItemClick(View view, int position) {
+                            OptionsQuestAdapter adapter = (OptionsQuestAdapter) mRecyclerView.getAdapter();
+                            String s = (String)adapter.getItem(position);
+                            Toast.makeText(getActivity(), "Selecionado  "+s, Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override public void onLongItemClick(View view, int position) {
+                            // do whatever
+                        }
+                    })
+            );
+
+        }*/
+
     }
 
     /**
@@ -136,8 +201,8 @@ public class QuestoesActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            // Return a questsFragment (defined as a static inner class below).
+            return questsFragment.newInstance(position + 1);
         }
 
         @Override

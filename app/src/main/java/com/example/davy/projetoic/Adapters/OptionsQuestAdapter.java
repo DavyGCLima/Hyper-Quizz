@@ -20,7 +20,7 @@ public class OptionsQuestAdapter extends BaseAdapter {
     public OptionsQuestAdapter(Context context) {
         super();
         this.context = context;
-        options = new ArrayList<String>();
+        options = new ArrayList<>();
         options.add("A");
         options.add("B");
         options.add("C");
@@ -42,20 +42,27 @@ public class OptionsQuestAdapter extends BaseAdapter {
         return i;
     }
 
+
+
     @Override
     public View getView(int i, View view, ViewGroup parent) {
-       /* if(view != null){
-            TextView t = (TextView) view.findViewById(R.id.optionText);
+        if(view != null){
+            TextView t = (TextView) view.findViewById(R.id.rowTextOption);
             t.setText("Texto " + options.get(1));
             return view;
         }else {
             //View v = LayoutInflater.from(context).inflate(R.layout.row_quest, parent, false);
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View v = inflater.inflate(R.layout.row_quest, null);
-            TextView t = (TextView) v.findViewById(R.id.optionText);
+            View v = inflater.inflate(R.layout.row_option, null);
+            TextView t = (TextView) v.findViewById(R.id.rowTextOption);
             t.setText("Texto " + options.get(i));
             return v;
-        }*/
-       return null;
+        }
+        //return null;
+    }
+
+    private void preencher(View view){
+        //o que vier do banco
+        
     }
 }
