@@ -17,14 +17,16 @@ public class OptionsQuestAdapter extends BaseAdapter {
     private Context context;
 
     //alterar para receber como parametro as opções e cada questão
-    public OptionsQuestAdapter(Context context) {
+    public OptionsQuestAdapter(Context context, String optionA, String optionB
+                , String optionC, String optionD, String optionE) {
         super();
         this.context = context;
         options = new ArrayList<>();
-        options.add("A");
-        options.add("B");
-        options.add("C");
-        options.add("D");
+        options.add("A) "+optionA);
+        options.add("B) "+optionB);
+        options.add("C) "+optionC);
+        options.add("D) "+optionD);
+        options.add("E) "+optionE);
     }
 
     @Override
@@ -48,14 +50,14 @@ public class OptionsQuestAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup parent) {
         if(view != null){
             TextView t = (TextView) view.findViewById(R.id.rowTextOption);
-            t.setText("Texto " + options.get(1));
+            t.setText(options.get(1));
             return view;
         }else {
             //View v = LayoutInflater.from(context).inflate(R.layout.row_quest, parent, false);
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View v = inflater.inflate(R.layout.row_option, null);
             TextView t = (TextView) v.findViewById(R.id.rowTextOption);
-            t.setText("Texto " + options.get(i));
+            t.setText(options.get(i));
             return v;
         }
         //return null;
@@ -63,6 +65,8 @@ public class OptionsQuestAdapter extends BaseAdapter {
 
     private void preencher(View view){
         //o que vier do banco
-        
+        for(int i = 0; i < 5; i++){
+            options.set(i, options.get(i)/*+  resutlado do banco*/);
+        }
     }
 }
