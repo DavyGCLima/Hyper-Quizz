@@ -1,0 +1,36 @@
+{
+  "name": "Prova1",
+  "numQuests" : "3",
+  "quests": [
+    {
+      "body": "A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como ",
+      "optionA": "uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.",
+      "optionB": "a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.  ",
+      "optionC": "a constatação de que está ocorrendo uma negação de análises mais equilibradas, por conta da violência dos radicalismos.",
+      "optionD": "uma forma de repúdio às redes sociais, quando estas expõem sem subterfúgios nossos comportamentos opressivos ancestrais. ",
+      "optionE": "uma crítica violenta, dirigida àqueles que entendem o equilíbrio de julgamento como subproduto da perplexidade.",
+      "answer": "a",
+      "image": ""
+    },
+    {
+      "body": "Ao se referir, metaforicamente, às duas ações do fogo selvagem (3° parágrafo), o autor do texto coloca em evidência",
+      "optionA": "o aparente desacordo de ações contraditórias que, de fato, se complementam num momento de ponderação.",
+      "optionB": "a natureza violenta de ações e reações que se regem pelos mesmos paradigmas de brutalidade.",
+      "optionC": "a contraposição entre ideais que são defendidos com argumentos igualmente ponderáveis.",
+      "optionD": "a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.",
+      "optionE": "o avanço e o retrocesso simultâneos que as ações ponderadas acabam por impor ao ritmo da história contemporânea.",
+      "answer": "c",
+      "image": ""
+    },
+    {
+      "body": "Sentimos que toda satisfação de nossos desejos advinda do mundo assemelha-se à esmola que mantém hoje o mendigo vivo, porém prolonga amanhã a sua fome. A resignação, ao contrário, assemelha-se à fortuna herdada: livra o herdeiro para sempre de todas as preocupações. SCHOPENHAUER, A. Aforismo para a sabedoria da vida. São Paulo: Martins Fontes, 2005. O trecho destaca uma ideia remanescente de uma tradição filosófica ocidental, segundo a qual a felicidade se mostra indissociavelmente ligada à",
+      "optionA": "consagração de relacionamentos afetivos. ",
+      "optionB": "administração da independência interior. ",
+      "optionC": "fugacidade do conhecimento empírico.",
+      "optionD": "liberdade de expressão religiosa. ",
+      "optionE": "busca de prazeres efêmeros.  ",
+      "answer": "e",
+      "image": ""
+    }
+  ]
+}

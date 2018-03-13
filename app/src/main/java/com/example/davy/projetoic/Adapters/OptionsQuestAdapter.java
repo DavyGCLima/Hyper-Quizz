@@ -44,16 +44,13 @@ public class OptionsQuestAdapter extends BaseAdapter {
         return i;
     }
 
-
-
     @Override
     public View getView(int i, View view, ViewGroup parent) {
         if(view != null){
             TextView t = (TextView) view.findViewById(R.id.rowTextOption);
-            t.setText(options.get(1));
+            t.setText(options.get(0));
             return view;
         }else {
-            //View v = LayoutInflater.from(context).inflate(R.layout.row_quest, parent, false);
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View v = inflater.inflate(R.layout.row_option, null);
             TextView t = (TextView) v.findViewById(R.id.rowTextOption);
@@ -61,12 +58,5 @@ public class OptionsQuestAdapter extends BaseAdapter {
             return v;
         }
         //return null;
-    }
-
-    private void preencher(View view){
-        //o que vier do banco
-        for(int i = 0; i < 5; i++){
-            options.set(i, options.get(i)/*+  resutlado do banco*/);
-        }
     }
 }

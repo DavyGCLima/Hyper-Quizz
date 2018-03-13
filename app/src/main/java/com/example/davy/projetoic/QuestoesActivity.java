@@ -1,12 +1,8 @@
 package com.example.davy.projetoic;
 
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -17,7 +13,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,7 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
+import com.example.davy.projetoic.Persistence.Prova;
+import com.example.davy.projetoic.Persistence.ProvaService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class QuestoesActivity extends AppCompatActivity {
@@ -56,21 +54,28 @@ public class QuestoesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        try {
+            Prova prova = ProvaService.getProva(ProvaService.PORVA, this);
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+        } catch (IOException e) {
+            Toast.makeText(this, "Erro ao obeter prova", Toast.LENGTH_SHORT);
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -107,9 +112,6 @@ public class QuestoesActivity extends AppCompatActivity {
         private static final String ARG_SECTION_NUMBER = "section_number";
         private static final String QUEST = "Quest";
 
-        RecyclerView mRecyclerView;
-        private OptionsQuestAdapter mAdapter;
-
         private ListView listQuests;
         int num;
 
@@ -120,12 +122,19 @@ public class QuestoesActivity extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static questsFragment newInstance(int sectionNumber, ArrayList<String> quest) {
+        public static questsFragment newInstance(int sectionNumber, Prova.Questoes questoes) {
             questsFragment fragment = new questsFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             //coloco a questão
-            args.putStringArrayList(QUEST, quest);
+            args.putString("BODY", questoes.getBody());
+            args.putString("OPA", questoes.getOptionA());
+            args.putString("OPB", questoes.getOptionB());
+            args.putString("OPC", questoes.getOptionC());
+            args.putString("OPD", questoes.getOptionD());
+            args.putString("OPE", questoes.getOptionE());
+            args.putString("ANSWER" ,questoes.getAnswer());
+            args.putString("IMG", questoes.getImage());
             fragment.setArguments(args);
             return fragment;
         }
@@ -136,16 +145,16 @@ public class QuestoesActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_questoes, container, false);
             TextView numberQuest = (TextView) rootView.findViewById(R.id.txtquest);
             //carregar aqui o corpo da questão
-            numberQuest.setText("Questão: " + getArguments().getInt(ARG_SECTION_NUMBER));
+            numberQuest.setText(getString(R.string.txtQuestao, getArguments().getInt(ARG_SECTION_NUMBER)));
             TextView quest = (TextView) rootView.findViewById(R.id.textQuestao);
-            quest.setText(getArguments().getStringArrayList(QUEST).get(0));
+            quest.setText(getArguments().getString("BODY"));
 
 
             listQuests = rootView.findViewById(R.id.list_quests);
             //quando criar o adapter, dever passar as opções e respostas
-            listQuests.setAdapter(new OptionsQuestAdapter(getContext(), getArguments().getStringArrayList(QUEST).get(1),
-                    getArguments().getStringArrayList(QUEST).get(2), getArguments().getStringArrayList(QUEST).get(3),
-                    getArguments().getStringArrayList(QUEST).get(4), getArguments().getStringArrayList(QUEST).get(4)));
+            listQuests.setAdapter(new OptionsQuestAdapter(getContext(), getArguments().getString("OPA"),
+                    getArguments().getString("OPB"), getArguments().getString("OPC"),
+                    getArguments().getString("OPD"), getArguments().getString("OPE")));
             listQuests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 //seleciona a resposta
                 @Override
@@ -165,78 +174,26 @@ public class QuestoesActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        ArrayList<ArrayList> prova;
+        //ArrayList<ArrayList> prova;
+        Prova prova;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SectionsPagerAdapter(FragmentManager fm, Prova prova) {
             super(fm);
-            searchQuestions();
+            this.prova = prova;
         }
 
-        public void searchQuestions(){
-            //buscar no banco uma prova e dividir uma questão para cada fragment
-            prova = new ArrayList();
-            //adiciona uma questao
-            prova.add(new ArrayList<String>());
-            ArrayList questao = prova.get(0);
-            //corpo
-            questao.add("A afirmação a ponderação é hoje a mais desmoralizada das virtudes deve ser entendida, no contexto, como ");
-            //a
-            questao.add("uma constatação já consensual, a partir da tendência dominante de se afirmar que, se uma coisa é isso, é também aquilo.");
-            //b
-            questao.add("a valorização do discernimento público que permite distinguir, metaforicamente falando, um abacaxi de um pepino.  ");
-            //c
-            questao.add("a constatação de que está ocorrendo uma negação de análises mais equilibradas, por conta da violência dos radicalismos.");
-            //d
-            questao.add("uma forma de repúdio às redes sociais, quando estas expõem sem subterfúgios nossos comportamentos opressivos ancestrais. ");
-            //e
-            questao.add("uma crítica violenta, dirigida àqueles que entendem o equilíbrio de julgamento como subproduto da perplexidade.");
-
-            //adiciona uma questao
-            prova.add(new ArrayList<String>());
-            ArrayList questao2 = prova.get(1);
-            //corpo
-            questao2.add("Ao se referir, metaforicamente, às duas ações do fogo selvagem (3° parágrafo), o autor do texto coloca em evidência");
-            //a
-            questao2.add("o aparente desacordo de ações contraditórias que, de fato, se complementam num momento de ponderação.");
-            //b
-            questao2.add("a natureza violenta de ações e reações que se regem pelos mesmos paradigmas de brutalidade.");
-            //c
-            questao2.add("a contraposição entre ideais que são defendidos com argumentos igualmente ponderáveis.");
-            //d
-            questao2.add("a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.");
-            //e
-            questao2.add("o avanço e o retrocesso simultâneos que as ações ponderadas acabam por impor ao ritmo da história contemporânea.");
-
-            //adiciona uma questao
-            prova.add(new ArrayList<String>());
-            ArrayList questao3 = prova.get(2);
-            //corpo
-            questao3.add(" 2Ao se referir, metaforicamente, às duas ações do fogo selvagem (3° parágrafo), o autor do texto coloca em evidência");
-            //a
-            questao3.add(" 2 o aparente desacordo de ações contraditórias que, de fato, se complementam num momento de ponderação.");
-            //b
-            questao3.add(" 2 a natureza violenta de ações e reações que se regem pelos mesmos paradigmas de brutalidade.");
-            //c
-            questao3.add("2 a contraposição entre ideais que são defendidos com argumentos igualmente ponderáveis.");
-            //d
-            questao3.add("2 a violência de opiniões contrárias, num percurso ao fim do qual elas acabarão por produzir o mesmo efeito positivo.");
-            //e
-            questao3.add("2 o avanço e o retrocesso simultâneos que as ações ponderadas acabam por impor ao ritmo da história contemporânea.");
-
-
-        }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a questsFragment (defined as a static inner class below).
-            return questsFragment.newInstance(position + 1, prova.get(position));
+            return questsFragment.newInstance(position + 1, prova.getQuestao(position));
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return prova.size();
+            return prova.getNumQuest();
         }
     }
 }
