@@ -1,29 +1,23 @@
 package com.example.davy.projetoic.Persistence;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.widget.Toast;
-
 import com.example.davy.projetoic.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
 
 /**
  * Created by reida on 02/03/2018.
@@ -31,59 +25,37 @@ import static junit.framework.Assert.assertEquals;
 
 public class ProvaService {
     public static final String PORVA = "prova.json";
-    public static final int body = 0;
-    public static final int answer = 6;
-    public static final int img = 7;
+    public static final String url = "http://webservice.com.br/servico/{tipo}";
 
-    public  static Prova getProva(String param, Context context) throws IOException {
-        String prova = readFile(param, context);
+    public  static Prova getProva(int tipoProva, Context context) throws Exception {
+        //String prova = readFile(param, context);
+        String tipo = getTipo(tipoProva);
+        //montar a url
+        url.replace("{tipo}",tipo);
+        //faz a requisição
+        String prova = getJSONFromAPI(url);
+        //constroi uma prova
         JSONObject p;
-        try {
-            p = new JSONObject(prova);
-            Prova pr = new Prova();
-            pr.setName(p.getString("name"));
-            pr.setNumQuest(p.getInt("numQuests"));
-            JSONArray questsJsonArray = p.getJSONArray("quests");
-            for(int i = 0; i < questsJsonArray.length(); i++){
-                JSONObject q = questsJsonArray.getJSONObject(i);
-                Prova.Questoes questao = new Prova.Questoes();
-                questao.setBody(q.optString("body"));
-                questao.setOptionA(q.optString("optionA"));
-                questao.setOptionB(q.optString("optionB"));
-                questao.setOptionC(q.optString("optionC"));
-                questao.setOptionD(q.optString("optionD"));
-                questao.setOptionE(q.optString("optionE"));
-                questao.setAnswer(q.optString("answer"));
-                questao.setImage(q.optString("image"));
-                pr.quests.add(questao);
-            }
-            return pr;
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(context, R.string.erroCarregaJson, Toast.LENGTH_SHORT);
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(context, R.string.erroCarregaJsonInesperado, Toast.LENGTH_SHORT);
-            return null;
+        p = new JSONObject(prova);
+        Prova pr = new Prova();
+        pr.setName(p.getString("name"));
+        pr.setNumQuest(p.getInt("numQuests"));
+        JSONArray questsJsonArray = p.getJSONArray("quests");
+        for(int i = 0; i < questsJsonArray.length(); i++){
+            JSONObject q = questsJsonArray.getJSONObject(i);
+            Prova.Questoes questao = new Prova.Questoes();
+            questao.setBody(q.optString("body"));
+            questao.setOptionA(q.optString("optionA"));
+            questao.setOptionB(q.optString("optionB"));
+            questao.setOptionC(q.optString("optionC"));
+            questao.setOptionD(q.optString("optionD"));
+            questao.setOptionE(q.optString("optionE"));
+            questao.setAnswer(q.optString("answer"));
+            questao.setImage(q.optString("image"));
+            pr.quests.add(questao);
         }
-    }
-
-    public static ArrayList<ArrayList> getQuestoes(Prova prova) throws IOException {
-        ArrayList<ArrayList> questsStr = new ArrayList<>();
-        for(int i =0; i < prova.getNumQuest(); i++){
-            questsStr.add(new ArrayList());
-        }
-        List<Prova.Questoes> quests = prova.getQuests();
-        for(int i = 0; i < prova.getNumQuest(); i++){
-            questsStr.get(i).set(1,quests.get(i).getOptionA());
-            questsStr.get(i).set(2,quests.get(i).getOptionB());
-            questsStr.get(i).set(3,quests.get(i).getOptionC());
-            questsStr.get(i).set(4,quests.get(i).getOptionD());
-            questsStr.get(i).set(5,quests.get(i).getOptionE());
-        }
-        return questsStr;
+        return pr;
     }
 
     private static String readFile(String jsonPath, Context context) throws FileNotFoundException {
@@ -112,7 +84,67 @@ public class ProvaService {
         }
 
         return prova;
+    }
 
+
+    private static String getTipo(int tipoProva){
+        if(tipoProva == R.string.enad)
+            return "enad";
+        else
+            return "enem";
+    }
+
+    public static String getJSONFromAPI(String url){
+        String retorno = "";
+        try {
+            URL apiEnd = new URL(url);
+            int codigoResposta;
+            HttpURLConnection conexao;
+            InputStream is;
+
+            conexao = (HttpURLConnection) apiEnd.openConnection();
+            conexao.setRequestMethod("GET");
+            conexao.setReadTimeout(15000);
+            conexao.setConnectTimeout(15000);
+            conexao.connect();
+
+            codigoResposta = conexao.getResponseCode();
+            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
+                is = conexao.getInputStream();
+            }else{
+                is = conexao.getErrorStream();
+            }
+
+            retorno = converterInputStreamToString(is);
+            is.close();
+            conexao.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return retorno;
+    }
+
+    private static String converterInputStreamToString(InputStream is){
+        StringBuffer buffer = new StringBuffer();
+        try{
+            BufferedReader br;
+            String linha;
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while((linha = br.readLine())!=null){
+                buffer.append(linha);
+            }
+
+            br.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        return buffer.toString();
     }
 
 

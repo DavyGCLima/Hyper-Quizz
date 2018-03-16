@@ -1,5 +1,7 @@
 package com.example.davy.projetoic;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +21,7 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +29,10 @@ import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
 import com.example.davy.projetoic.Persistence.Prova;
 import com.example.davy.projetoic.Persistence.ProvaService;
 
+import org.json.JSONException;
+
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class QuestoesActivity extends AppCompatActivity {
 
@@ -44,6 +50,8 @@ public class QuestoesActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    protected Prova prova;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +63,15 @@ public class QuestoesActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         try {
-            Prova prova = ProvaService.getProva(ProvaService.PORVA, this);
-            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
+            //deverá ser colocado aqui o aprametro para qual prova deve ser carregada
+            //Prova prova = ProvaService.getProva(R.string.enem, this);
+
+            //parametro do execute é o tipo da prova R.string.enad
+
+            progressBar = findViewById(R.id.progressBar);
+            /*Prova prova =*/ new GetProvaTask(this, mSectionsPagerAdapter).execute(R.string.enad).get();
+
+            //mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
 
             // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.container);
@@ -70,14 +85,15 @@ public class QuestoesActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                 }
             });
-        } catch (IOException e) {
-            Toast.makeText(this, "Erro ao obeter prova", Toast.LENGTH_SHORT);
-            e.printStackTrace();
         }catch (Exception e){
             e.printStackTrace();
+            Log.e("Erro No APP: ", e.getMessage());
         }
     }
 
+    private void exibirProgress(boolean exibir) {
+        progressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +115,75 @@ public class QuestoesActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
+
+        private QuestoesActivity context;
+        private SectionsPagerAdapter sectionsPagerAdapter;
+
+        public GetProvaTask(QuestoesActivity context, SectionsPagerAdapter sectionsPagerAdapter) {
+            this.context = context;
+            this.sectionsPagerAdapter = sectionsPagerAdapter;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            exibirProgress(true);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Prova prova) {
+            if(prova != null) {
+                super.onPostExecute(prova);
+                //devolver a prova para o adapter
+                sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
+            }else{
+                Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            exibirProgress(false);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            progressBar.incrementProgressBy(25);
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Prova prova) {
+            super.onCancelled(prova);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected Prova doInBackground(Integer... integers) {
+            publishProgress();
+            try {
+                Prova prova = ProvaService.getProva(integers[0], context);
+                publishProgress();
+                return prova;
+            } catch (IOException e) {
+                Log.e("Erro de conexão: ", e.getMessage());
+                e.printStackTrace();
+                return null;
+            }catch (JSONException e){
+                e.printStackTrace();
+                Log.e("Erro conv JSON: ", e.getMessage());
+                return null;
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Erro de conexão inesp: ", e.getMessage());
+                return null;
+            }
+        }
     }
 
     /**
