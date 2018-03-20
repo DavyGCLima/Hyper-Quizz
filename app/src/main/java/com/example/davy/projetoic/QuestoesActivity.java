@@ -26,12 +26,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
+import com.example.davy.projetoic.Persistence.GetProvaTask;
 import com.example.davy.projetoic.Persistence.Prova;
 import com.example.davy.projetoic.Persistence.ProvaService;
 
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 
 public class QuestoesActivity extends AppCompatActivity {
@@ -51,7 +53,6 @@ public class QuestoesActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     protected Prova prova;
-    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,10 @@ public class QuestoesActivity extends AppCompatActivity {
 
             //parametro do execute é o tipo da prova R.string.enad
 
-            progressBar = findViewById(R.id.progressBar);
-            /*Prova prova =*/ new GetProvaTask(this, mSectionsPagerAdapter).execute(R.string.enad).get();
 
-            //mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
+            Bundle extras = getIntent().getExtras();
+            prova = (Prova)extras.getSerializable("Prova");
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
 
             // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.container);
@@ -91,8 +92,18 @@ public class QuestoesActivity extends AppCompatActivity {
         }
     }
 
-    private void exibirProgress(boolean exibir) {
-        progressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
+    @Override
+    protected void onResume() {
+        //pegar do bundle a prova
+       /* try {
+            prova = new GetProvaTask(this).execute(R.string.enad).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }*/
+
+        super.onResume();
     }
 
     @Override
@@ -117,74 +128,6 @@ public class QuestoesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
-
-        private QuestoesActivity context;
-        private SectionsPagerAdapter sectionsPagerAdapter;
-
-        public GetProvaTask(QuestoesActivity context, SectionsPagerAdapter sectionsPagerAdapter) {
-            this.context = context;
-            this.sectionsPagerAdapter = sectionsPagerAdapter;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            exibirProgress(true);
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Prova prova) {
-            if(prova != null) {
-                super.onPostExecute(prova);
-                //devolver a prova para o adapter
-                sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
-            }else{
-                Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            exibirProgress(false);
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            progressBar.incrementProgressBy(25);
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onCancelled(Prova prova) {
-            super.onCancelled(prova);
-        }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-            Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        protected Prova doInBackground(Integer... integers) {
-            publishProgress();
-            try {
-                Prova prova = ProvaService.getProva(integers[0], context);
-                publishProgress();
-                return prova;
-            } catch (IOException e) {
-                Log.e("Erro de conexão: ", e.getMessage());
-                e.printStackTrace();
-                return null;
-            }catch (JSONException e){
-                e.printStackTrace();
-                Log.e("Erro conv JSON: ", e.getMessage());
-                return null;
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.e("Erro de conexão inesp: ", e.getMessage());
-                return null;
-            }
-        }
-    }
 
     /**
      * A placeholder fragment containing a simple view.

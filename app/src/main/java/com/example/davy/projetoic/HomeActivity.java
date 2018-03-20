@@ -13,9 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
+
+import com.example.davy.projetoic.Persistence.GetProvaTask;
+import com.example.davy.projetoic.Persistence.Prova;
+
+import java.util.concurrent.ExecutionException;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,8 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        progressBar = findViewById(R.id.progressBrar);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -87,7 +96,17 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void openQuestsActivity(){
-        Intent it = new Intent(this, QuestoesActivity.class);
-        startActivity(it);
+        //try {
+            new GetProvaTask(this, progressBar).execute(R.string.enad);
+            /*Intent it = new Intent(this, QuestoesActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Prova", prova);
+            it.putExtras(bundle);
+            startActivity(it);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }*/
     }
 }

@@ -2,6 +2,7 @@ package com.example.davy.projetoic.Persistence;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 import com.example.davy.projetoic.R;
 import org.json.JSONArray;
@@ -25,12 +26,12 @@ import java.util.List;
 
 public class ProvaService {
     public static final String PORVA = "prova.json";
-    public static final String url = "http://webservice.com.br/servico/{tipo}";
+    public static final String url = "http://192.168.15.15:8080/webServiceIC/serv";//"http://172.16.44.2:8080/webServiceIC/serv";//"http://10.0.2.2:8080/webServiceIC/serv";
 
     public  static Prova getProva(int tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
         String tipo = getTipo(tipoProva);
-        //montar a url
+        //monta a url
         url.replace("{tipo}",tipo);
         //faz a requisição
         String prova = getJSONFromAPI(url);
@@ -86,7 +87,7 @@ public class ProvaService {
         return prova;
     }
 
-
+    //retorna o tipo de prova a ser buscado
     private static String getTipo(int tipoProva){
         if(tipoProva == R.string.enad)
             return "enad";
@@ -94,20 +95,25 @@ public class ProvaService {
             return "enem";
     }
 
-    public static String getJSONFromAPI(String url){
+    //Realiza a requisição no servidor e espera o retorno do json em resposta
+    public static String getJSONFromAPI(String url) throws Exception {
         String retorno = "";
         try {
+            //objetos
             URL apiEnd = new URL(url);
             int codigoResposta;
             HttpURLConnection conexao;
             InputStream is;
 
+            //coneção web
             conexao = (HttpURLConnection) apiEnd.openConnection();
             conexao.setRequestMethod("GET");
             conexao.setReadTimeout(15000);
             conexao.setConnectTimeout(15000);
+            //conexao.setRequestProperty();
             conexao.connect();
 
+            //valida a resposta
             codigoResposta = conexao.getResponseCode();
             if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
                 is = conexao.getInputStream();
@@ -116,6 +122,9 @@ public class ProvaService {
             }
 
             retorno = converterInputStreamToString(is);
+            Log.i("Infome","INFORME ================ "+retorno);
+            if(retorno.equals(""))
+                throw new Exception("Erro na resposta do servidor");
             is.close();
             conexao.disconnect();
 
@@ -128,6 +137,7 @@ public class ProvaService {
         return retorno;
     }
 
+    //converte um input stream em string para processamento no app
     private static String converterInputStreamToString(InputStream is){
         StringBuffer buffer = new StringBuffer();
         try{

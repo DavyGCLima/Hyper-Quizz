@@ -1,8 +1,9 @@
 package com.example.davy.projetoic.Persistence;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Prova{
+public class Prova implements Serializable{
     int numQuest;
     ArrayList<Questoes> quests;
     String name;
@@ -39,7 +40,7 @@ public class Prova{
         this.name = name;
     }
 
-    public static class Questoes {
+    public static class Questoes implements Serializable {
         String body;
         String optionA;
         String optionB;
