@@ -1,6 +1,8 @@
 package com.example.davy.projetoic;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -93,20 +97,6 @@ public class QuestoesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        //pegar do bundle a prova
-       /* try {
-            prova = new GetProvaTask(this).execute(R.string.enad).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
-
-        super.onResume();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_questoes, menu);
@@ -162,7 +152,7 @@ public class QuestoesActivity extends AppCompatActivity {
             args.putString("OPD", questoes.getOptionD());
             args.putString("OPE", questoes.getOptionE());
             args.putString("ANSWER" ,questoes.getAnswer());
-            args.putString("IMG", questoes.getImage());
+            args.putByteArray("IMG", questoes.getImage());
             fragment.setArguments(args);
             return fragment;
         }
@@ -175,8 +165,19 @@ public class QuestoesActivity extends AppCompatActivity {
             //carregar aqui o corpo da questão
             numberQuest.setText(getString(R.string.txtQuestao, getArguments().getInt(ARG_SECTION_NUMBER)));
             TextView quest = (TextView) rootView.findViewById(R.id.textQuestao);
+            quest.setMovementMethod(new ScrollingMovementMethod());
             quest.setText(getArguments().getString("BODY"));
 
+            ImageView imageView = rootView.findViewById(R.id.imageView);
+            imageView.setVisibility(View.INVISIBLE);
+            if (getArguments().get("IMG") != null){
+                byte[] img = getArguments().getByteArray("IMG");
+                if(img != null) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+                    imageView.setImageBitmap(bitmap);
+                    imageView.setVisibility(View.VISIBLE);
+                }
+            }
 
             listQuests = rootView.findViewById(R.id.list_quests);
             //quando criar o adapter, dever passar as opções e respostas

@@ -1,5 +1,10 @@
 package com.example.davy.projetoic.Persistence;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -48,7 +53,7 @@ public class Prova implements Serializable{
         String optionD;
         String optionE;
         String answer;
-        String image;
+        byte[] image;
 
         public Questoes() {
 
@@ -82,8 +87,15 @@ public class Prova implements Serializable{
             return answer;
         }
 
-        public String getImage() {
-            return image;
+        public byte[] getImage() {
+            if (image != null) {
+                //ByteArrayOutputStream out = new ByteArrayOutputStream();
+                //image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                //byte[] img = out.toByteArray();
+                //return img;
+                return image;
+            }else
+                return null;
         }
 
         public void setBody(String body) {
@@ -115,10 +127,12 @@ public class Prova implements Serializable{
         }
 
         public void setImage(String image) throws Exception {
-               /* if(image.equals(""))
+                if(image.equals(""))
                     this.image = null;
-                byte[] decode = Base64.decode(image, Base64.DEFAULT);*/
-            this.image = image;
+                byte[] decode = Base64.decode(image, Base64.DEFAULT);
+                //Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);
+            //this.image = bitmap;
+            this.image = decode;
 
         }
     }

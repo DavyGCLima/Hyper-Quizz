@@ -5,46 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:scrollbars="vertical"
     tools:context="com.example.davy.projetoic.QuestoesActivity$questsFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:animateLayoutChanges="true">
 
-        <TextView
-            android:id="@+id/txtquest"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="3dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/textQuestao"
-            app:layout_constraintEnd_toStartOf="@id/textQuestao"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
-        <TextView
-            android:id="@+id/textQuestao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginVertical="5dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toStartOf="@id/list_quests"
-            app:layout_constraintStart_toEndOf="@id/txtquest"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtquest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/textQuestao"
+                app:layout_constraintEnd_toStartOf="@id/textQuestao"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <ListView
-            android:id="@+id/list_quests"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textQuestao"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
 
+            <TextView
+                android:id="@+id/textQuestao"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toStartOf="@id/list_quests"
+                app:layout_constraintStart_toEndOf="@id/txtquest"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scrollbars="vertical"
+                android:layout_weight="0.4"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_background"
+                android:alpha="0.4"/>
+
+            <ListView
+                android:id="@+id/list_quests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textQuestao"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="0.3"/>
+        </LinearLayout>
 
 </ScrollView>

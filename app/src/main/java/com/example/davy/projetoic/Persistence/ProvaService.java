@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class ProvaService {
     public static final String PORVA = "prova.json";
-    public static final String url = "http://192.168.15.15:8080/webServiceIC/serv";//"http://172.16.44.2:8080/webServiceIC/serv";//"http://10.0.2.2:8080/webServiceIC/serv";
+    public static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";//*/"http://10.0.2.2:8080/webServiceIC/serv";
 
     public  static Prova getProva(int tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
@@ -96,7 +97,7 @@ public class ProvaService {
     }
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
-    public static String getJSONFromAPI(String url) throws Exception {
+    public static String getJSONFromAPI(String url) throws Exception{
         String retorno = "";
         try {
             //objetos

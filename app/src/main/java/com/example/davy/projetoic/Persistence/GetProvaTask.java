@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.davy.projetoic.HomeActivity;
 import com.example.davy.projetoic.QuestoesActivity;
+import com.example.davy.projetoic.utils.AndroidUtils;
 
 import org.json.JSONException;
 
@@ -75,15 +76,19 @@ public class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
     protected Prova doInBackground(Integer... integers) {
         publishProgress();
         try {
+            AndroidUtils.isNeworkAvailble(context);
             publishProgress();
             Prova prova = ProvaService.getProva(integers[0], context);
             publishProgress();
             return prova;
+        } catch (java.net.ConnectException e){
+            Toast.makeText(context,"Erro ao conectar",Toast.LENGTH_LONG);
+            return null;
         } catch (IOException e) {
             Log.e("Erro de conexão: ", e.getMessage());
             e.printStackTrace();
             return null;
-        }catch (JSONException e){
+        }catch (JSONException e) {
             e.printStackTrace();
             Log.e("Erro conv JSON: ", e.getMessage());
             return null;

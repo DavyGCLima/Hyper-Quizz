@@ -96,17 +96,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void openQuestsActivity(){
-        //try {
             new GetProvaTask(this, progressBar).execute(R.string.enad);
-            /*Intent it = new Intent(this, QuestoesActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Prova", prova);
-            it.putExtras(bundle);
-            startActivity(it);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
     }
 }
