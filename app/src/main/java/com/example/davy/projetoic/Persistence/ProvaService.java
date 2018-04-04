@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ProvaService {
     public static final String PORVA = "prova.json";
-    public static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";//*/"http://10.0.2.2:8080/webServiceIC/serv";
+    public static final String url = "http://172.16.44.2:8080/webServiceIC/serv";//"http://10.0.2.2:8080/webServiceIC/serv";
 
     public  static Prova getProva(int tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
