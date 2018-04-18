@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 import com.example.davy.projetoic.R;
+import com.google.gson.JsonArray;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,38 +28,41 @@ import java.util.List;
  */
 
 public class ProvaService {
-    public static final String PORVA = "prova.json";
-    public static final String url = "http://172.16.44.2:8080/webServiceIC/serv";//"http://10.0.2.2:8080/webServiceIC/serv";
 
-    public  static Prova getProva(int tipoProva, Context context) throws Exception {
+    public static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";*/"http://10.0.2.2:8080/webServiceIC/serv";
+
+    public  static Prova getProva(String tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
-        String tipo = getTipo(tipoProva);
-        //monta a url
-        url.replace("{tipo}",tipo);
         //faz a requisição
-        String prova = getJSONFromAPI(url);
+        String prova = getJSONFromAPI(url, tipoProva);
         //constroi uma prova
         JSONObject p;
 
         p = new JSONObject(prova);
-        Prova pr = new Prova();
-        pr.setName(p.getString("name"));
-        pr.setNumQuest(p.getInt("numQuests"));
-        JSONArray questsJsonArray = p.getJSONArray("quests");
-        for(int i = 0; i < questsJsonArray.length(); i++){
-            JSONObject q = questsJsonArray.getJSONObject(i);
-            Prova.Questoes questao = new Prova.Questoes();
-            questao.setBody(q.optString("body"));
-            questao.setOptionA(q.optString("optionA"));
-            questao.setOptionB(q.optString("optionB"));
-            questao.setOptionC(q.optString("optionC"));
-            questao.setOptionD(q.optString("optionD"));
-            questao.setOptionE(q.optString("optionE"));
-            questao.setAnswer(q.optString("answer"));
-            questao.setImage(q.optString("image"));
-            pr.quests.add(questao);
+
+        if(!p.isNull("ERRO"))
+            Toast.makeText(context, p.getString("ERRO"), Toast.LENGTH_SHORT);
+        else {
+            Prova pr = new Prova();
+            pr.setName(p.getString("name"));
+            pr.setNumQuest(p.getInt("numQuests"));
+            JSONArray questsJsonArray = p.getJSONArray("quests");
+            for (int i = 0; i < questsJsonArray.length(); i++) {
+                JSONObject q = questsJsonArray.getJSONObject(i);
+                Prova.Questoes questao = new Prova.Questoes();
+                questao.setBody(q.optString("body"));
+                questao.setOptionA(q.optString("optionA"));
+                questao.setOptionB(q.optString("optionB"));
+                questao.setOptionC(q.optString("optionC"));
+                questao.setOptionD(q.optString("optionD"));
+                questao.setOptionE(q.optString("optionE"));
+                questao.setAnswer(q.optString("answer"));
+                questao.setImage(q.optString("image"));
+                pr.quests.add(questao);
+            }
+            return pr;
         }
-        return pr;
+        return null;
     }
 
     private static String readFile(String jsonPath, Context context) throws FileNotFoundException {
@@ -88,16 +93,24 @@ public class ProvaService {
         return prova;
     }
 
-    //retorna o tipo de prova a ser buscado
-    private static String getTipo(int tipoProva){
-        if(tipoProva == R.string.enad)
-            return "enad";
-        else
-            return "enem";
+    public static ArrayList getTipoProva()throws  Exception{
+        String json = getJSONFromAPI(url, "listar");
+        JSONObject jsonObject = new JSONObject(json);
+        JSONArray tipos = jsonObject.getJSONArray("tipo");
+        ArrayList list = new ArrayList();
+        for(int i = 0; i < tipos.length(); i++){
+            list.add(tipos.getString(i));
+        }
+        return list;
     }
 
-    //Realiza a requisição no servidor e espera o retorno do json em resposta
-    public static String getJSONFromAPI(String url) throws Exception{
+    public static ArrayList getListaProvas(String tipoProva) throws Exception {
+        String retorno = getListaProvasJson(url, tipoProva);
+        JSONObject jsonObject = new JSONObject(retorno);
+        return null;
+    }
+
+    public static String getListaProvasJson(String url, String tipoProva) throws Exception {
         String retorno = "";
         try {
             //objetos
@@ -108,7 +121,52 @@ public class ProvaService {
 
             //coneção web
             conexao = (HttpURLConnection) apiEnd.openConnection();
-            conexao.setRequestMethod("GET");
+            conexao.setRequestMethod("POST");
+            conexao.addRequestProperty("tipo","listarProvas");
+            conexao.addRequestProperty("tipoProva",tipoProva);
+            conexao.setReadTimeout(15000);
+            conexao.setConnectTimeout(15000);
+            conexao.connect();
+
+            //valida a resposta
+            codigoResposta = conexao.getResponseCode();
+            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
+                is = conexao.getInputStream();
+            }else{
+                is = conexao.getErrorStream();
+            }
+
+            retorno = converterInputStreamToString(is);
+            Log.i("Infome","INFORME ================ "+retorno);
+            if(retorno.equals(""))
+                throw new Exception("Erro na resposta do servidor");
+            is.close();
+            conexao.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return retorno;
+    }
+
+
+    //Realiza a requisição no servidor e espera o retorno do json em resposta
+    public static String getJSONFromAPI(String url, String tipoReq) throws Exception{
+        String retorno = "";
+        try {
+            //objetos
+            URL apiEnd = new URL(url);
+            int codigoResposta;
+            HttpURLConnection conexao;
+            InputStream is;
+
+            //coneção web
+            conexao = (HttpURLConnection) apiEnd.openConnection();
+            conexao.setRequestMethod("POST");
+            conexao.addRequestProperty("tipo",tipoReq);
             conexao.setReadTimeout(15000);
             conexao.setConnectTimeout(15000);
             //conexao.setRequestProperty();
@@ -157,6 +215,4 @@ public class ProvaService {
 
         return buffer.toString();
     }
-
-
 }

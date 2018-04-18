@@ -16,9 +16,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 
 import com.example.davy.projetoic.Persistence.GetProvaTask;
-import com.example.davy.projetoic.Persistence.Prova;
-
-import java.util.concurrent.ExecutionException;
+import com.example.davy.projetoic.Persistence.GetTipoProvaTask;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -96,6 +94,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void openQuestsActivity(){
-            new GetProvaTask(this, progressBar).execute(R.string.enad);
+            //new GetProvaTask(this, progressBar).execute(R.string.enad);
+            new GetTipoProvaTask(this, progressBar).execute();
     }
 }

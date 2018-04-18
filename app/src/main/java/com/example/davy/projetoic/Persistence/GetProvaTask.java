@@ -16,7 +16,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-public class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
+public class GetProvaTask extends AsyncTask<String,Void,Prova> {
 
     private HomeActivity context;
     private ProgressBar progressBar;
@@ -24,10 +24,6 @@ public class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
     public GetProvaTask(HomeActivity context, ProgressBar progressBar) {
         this.context = context;
         this.progressBar = progressBar;
-    }
-
-    public GetProvaTask(HomeActivity context) {
-        this.context = context;
     }
 
     @Override
@@ -62,23 +58,21 @@ public class GetProvaTask extends AsyncTask<Integer,Void,Prova> {
     }
 
     @Override
-    protected void onCancelled(Prova prova) {
-        super.onCancelled(prova);
-    }
-
-    @Override
     protected void onCancelled() {
         super.onCancelled();
         Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    protected Prova doInBackground(Integer... integers) {
+    protected Prova doInBackground(String... entrada) {
         publishProgress();
         try {
-            AndroidUtils.isNeworkAvailble(context);
+            if(!AndroidUtils.isNeworkAvailble(context))
+                Toast.makeText(context, "Não foi possivel conectar-se a rede", Toast.LENGTH_SHORT).show();
             publishProgress();
-            Prova prova = ProvaService.getProva(integers[0], context);
+            Prova prova = ProvaService.getProva(entrada[0], context);
+            if(prova.equals(null))
+                onCancelled();
             publishProgress();
             return prova;
         } catch (java.net.ConnectException e){

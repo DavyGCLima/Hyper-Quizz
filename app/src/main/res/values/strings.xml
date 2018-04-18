@@ -10,8 +10,8 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_login">Logar</string>
     <string name="txtQuestao">Questão: %1$d</string>
-    <string name="enad">ENAD</string>
-    <string name="enem">ENEM</string>
+    <string name="enad">enad</string>
+    <string name="enem">enem</string>
     <string name="progressBarDownload">Aguarde enquanto o download da prova é feito</string>
 
     <!-- Strings related to login -->
@@ -31,4 +31,5 @@
     <string name="ErroConvertImg">Erro ao converter imagem</string>
     <string name="erroCarregaJson">Houve um erro ao carregar o json</string>
     <string name="erroCarregaJsonInesperado">Houve um erro inesperado ao carregar o json</string>
+    <string name="btnTipoProva">Escolher</string>
 </resources>

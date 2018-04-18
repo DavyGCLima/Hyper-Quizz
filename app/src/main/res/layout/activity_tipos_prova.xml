@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    tools:context="com.example.davy.projetoic.TiposProva"
+    android:id="@+id/layoutTiposProva">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupTipoProva"
+        android:layout_gravity="center_horizontal">
+            <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:id="@+id/listViewTipoProva"
+            android:layout_gravity="center_horizontal">
+
+            </ListView>
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btnTipoProvaOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btnTipoProva" />
+
+</LinearLayout>
