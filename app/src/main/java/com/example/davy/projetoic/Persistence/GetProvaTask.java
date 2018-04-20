@@ -1,5 +1,6 @@
 package com.example.davy.projetoic.Persistence;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.davy.projetoic.HomeActivity;
 import com.example.davy.projetoic.QuestoesActivity;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
@@ -18,10 +18,10 @@ import java.io.IOException;
 
 public class GetProvaTask extends AsyncTask<String,Void,Prova> {
 
-    private HomeActivity context;
+    private Context context;
     private ProgressBar progressBar;
 
-    public GetProvaTask(HomeActivity context, ProgressBar progressBar) {
+    public GetProvaTask(Context context, ProgressBar progressBar) {
         this.context = context;
         this.progressBar = progressBar;
     }

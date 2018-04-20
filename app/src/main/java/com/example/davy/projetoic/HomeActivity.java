@@ -94,7 +94,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void openQuestsActivity(){
-            //new GetProvaTask(this, progressBar).execute(R.string.enad);
+            //new GetProvaTask(this, progressBar).execute("ENEM");
             new GetTipoProvaTask(this, progressBar).execute();
     }
 }

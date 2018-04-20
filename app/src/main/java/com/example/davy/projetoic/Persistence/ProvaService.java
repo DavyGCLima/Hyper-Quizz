@@ -1,26 +1,21 @@
 package com.example.davy.projetoic.Persistence;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 import com.example.davy.projetoic.R;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -29,7 +24,7 @@ import java.util.List;
 
 public class ProvaService {
 
-    public static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";*/"http://10.0.2.2:8080/webServiceIC/serv";
+    private static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";*/"http://10.0.2.2:8080/webServiceIC/serv";
 
     public  static Prova getProva(String tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
@@ -93,24 +88,43 @@ public class ProvaService {
         return prova;
     }
 
-    public static ArrayList getTipoProva()throws  Exception{
+    public static ArrayList<String> getTipoProva()throws  Exception{
         String json = getJSONFromAPI(url, "listar");
         JSONObject jsonObject = new JSONObject(json);
-        JSONArray tipos = jsonObject.getJSONArray("tipo");
-        ArrayList list = new ArrayList();
-        for(int i = 0; i < tipos.length(); i++){
-            list.add(tipos.getString(i));
+        if(jsonObject.has("ERRO")){
+            throw new Exception(jsonObject.getString("ERRO"));
+        }else {
+            JSONArray tipos = jsonObject.getJSONArray("tipo");
+            ArrayList<String> list = new ArrayList<>();
+            for (int i = 0; i < tipos.length(); i++) {
+                list.add(tipos.getString(i));
+            }
+            return list;
         }
-        return list;
     }
 
     public static ArrayList getListaProvas(String tipoProva) throws Exception {
         String retorno = getListaProvasJson(url, tipoProva);
         JSONObject jsonObject = new JSONObject(retorno);
-        return null;
+        if(jsonObject.has("ERRO")){
+            throw new Exception(jsonObject.getString("ERRO"));
+        }else {
+            JSONArray provas = jsonObject.getJSONArray("prova");
+            ArrayList<ArrayList<String>> list = new ArrayList<>();
+            for (int i = 0; i < provas.length(); i++) {
+                ArrayList<String> linha = new ArrayList<>();
+                JSONObject p = provas.getJSONObject(i);
+                linha.add(p.getString("idProva"));
+                linha.add(p.getString("idTipoProva"));
+                linha.add(p.getString("nome"));
+                linha.add(p.getString("qtdQuestoes"));
+                list.add(linha);
+            }
+            return list;
+        }
     }
 
-    public static String getListaProvasJson(String url, String tipoProva) throws Exception {
+    private static String getListaProvasJson(String url, String tipoProva) throws Exception {
         String retorno = "";
         try {
             //objetos
@@ -154,7 +168,7 @@ public class ProvaService {
 
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
-    public static String getJSONFromAPI(String url, String tipoReq) throws Exception{
+    private static String getJSONFromAPI(String url, String tipoReq) throws Exception{
         String retorno = "";
         try {
             //objetos

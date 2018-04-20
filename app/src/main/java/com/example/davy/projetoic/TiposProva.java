@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -18,12 +19,14 @@ import java.util.ArrayList;
 
 public class TiposProva extends AppCompatActivity {
 
+    ProgressBar progress;
     RadioGroup grupo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipos_prova);
 
+        progress = findViewById(R.id.progressListProvas);
         grupo = findViewById(R.id.radioGroupTipoProva);//new RadioGroup(this);
         ArrayList<String> lista = getIntent().getStringArrayListExtra("lista");
        for(int i = 0; i < lista.size(); i++) {
@@ -40,7 +43,7 @@ public class TiposProva extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Selecione um tipo de prova", Toast.LENGTH_SHORT).show();
                 else {
                     RadioButton btn = grupo.findViewById(grupo.getCheckedRadioButtonId());
-                    new GetListaProvasTask(con).execute((String) btn.getText());
+                    new GetListaProvasTask(con, progress).execute((String) btn.getText());
                 }
             }
         });

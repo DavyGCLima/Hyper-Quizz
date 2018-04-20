@@ -32,6 +32,8 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
     protected void onPreExecute() {
         if(progressBar != null)
             exibirProgress(true);
+        if(!AndroidUtils.isNeworkAvailble(context))
+            Toast.makeText(context, "Não foi possivel conectar-se a rede", Toast.LENGTH_SHORT).show();
         super.onPreExecute();
     }
 
@@ -39,18 +41,13 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
     protected ArrayList doInBackground(Void... voids) {
         publishProgress();
         try {
-            if(!AndroidUtils.isNeworkAvailble(context))
-                Toast.makeText(context, "Não foi possivel conectar-se a rede", Toast.LENGTH_SHORT).show();
             ArrayList list;
             list = ProvaService.getTipoProva();
-            if(list == null || list.size() == 0){
-              onCancelled();
-            }
             publishProgress();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(context, "Erro desconhecio: "+e.getMessage(), Toast.LENGTH_LONG).show();
+            onCancelled();
         }
         return null;
     }
@@ -67,7 +64,8 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
             bundle.putStringArrayList("lista", list);
             it.putExtras(bundle);
             context.startActivity(it);
-        }
+        }else
+            Toast.makeText(context, "Não foi possivel recuperar os dados", Toast.LENGTH_SHORT).show();
         super.onPostExecute(list);
     }
 
@@ -82,7 +80,7 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        Toast.makeText(context, "Nenhuma prova encontrada", Toast.LENGTH_SHORT);
+        Toast.makeText(context, "Nenhuma tipo de encontrado", Toast.LENGTH_SHORT);
     }
 
     private void exibirProgress(boolean exibir) {
