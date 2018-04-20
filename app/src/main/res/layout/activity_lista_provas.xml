@@ -8,30 +8,25 @@
     tools:context=".ListaProvas">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayoutListaProvas"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listaProvas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.441">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listaProvas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <ProgressBar
         android:id="@+id/progressListProvas"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="296dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -39,7 +34,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayoutListaProvas" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

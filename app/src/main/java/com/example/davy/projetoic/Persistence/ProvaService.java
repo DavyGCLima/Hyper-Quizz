@@ -29,7 +29,7 @@ public class ProvaService {
     public  static Prova getProva(String tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
         //faz a requisição
-        String prova = getJSONFromAPI(url, tipoProva);
+        String prova = getJSONFromAPI(url, "buscarProva",tipoProva);
         //constroi uma prova
         JSONObject p;
 
@@ -89,7 +89,7 @@ public class ProvaService {
     }
 
     public static ArrayList<String> getTipoProva()throws  Exception{
-        String json = getJSONFromAPI(url, "listar");
+        String json = getJSONFromAPI(url, "listar", null);
         JSONObject jsonObject = new JSONObject(json);
         if(jsonObject.has("ERRO")){
             throw new Exception(jsonObject.getString("ERRO"));
@@ -168,7 +168,7 @@ public class ProvaService {
 
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
-    private static String getJSONFromAPI(String url, String tipoReq) throws Exception{
+    private static String getJSONFromAPI(String url, String tipoReq, String extParam) throws Exception{
         String retorno = "";
         try {
             //objetos
@@ -181,6 +181,8 @@ public class ProvaService {
             conexao = (HttpURLConnection) apiEnd.openConnection();
             conexao.setRequestMethod("POST");
             conexao.addRequestProperty("tipo",tipoReq);
+            if(extParam != null)
+                conexao.addRequestProperty("idProva", extParam);
             conexao.setReadTimeout(15000);
             conexao.setConnectTimeout(15000);
             //conexao.setRequestProperty();

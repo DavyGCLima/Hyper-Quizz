@@ -46,14 +46,14 @@ public class Prova implements Serializable{
     }
 
     public static class Questoes implements Serializable {
-        String body;
-        String optionA;
-        String optionB;
-        String optionC;
-        String optionD;
-        String optionE;
-        String answer;
-        byte[] image;
+        protected String body;
+        protected String optionA;
+        protected String optionB;
+        protected String optionC;
+        protected String optionD;
+        protected String optionE;
+        protected String answer;
+        protected byte[] image;
 
         public Questoes() {
 
