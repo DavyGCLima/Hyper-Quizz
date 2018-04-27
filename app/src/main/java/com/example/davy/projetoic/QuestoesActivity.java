@@ -1,9 +1,8 @@
 package com.example.davy.projetoic;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,19 +24,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
-import com.example.davy.projetoic.Persistence.GetProvaTask;
 import com.example.davy.projetoic.Persistence.Prova;
-import com.example.davy.projetoic.Persistence.ProvaService;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 
 public class QuestoesActivity extends AppCompatActivity {
@@ -76,10 +67,11 @@ public class QuestoesActivity extends AppCompatActivity {
 
             Bundle extras = getIntent().getExtras();
             prova = (Prova)extras.getSerializable("Prova");
-            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(),prova);
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
 
             // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setOffscreenPageLimit(2);
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -94,6 +86,12 @@ public class QuestoesActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.e("Erro No APP: ", e.getMessage());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, String.valueOf(prova.getNumQuest()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -128,10 +126,8 @@ public class QuestoesActivity extends AppCompatActivity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-        private static final String QUEST = "Quest";
 
         private ListView listQuests;
-        int num;
 
         public questsFragment() {
         }
@@ -216,12 +212,11 @@ public class QuestoesActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a questsFragment (defined as a static inner class below).
-            return questsFragment.newInstance(position + 1, prova.getQuestao(position));
+            return questsFragment.newInstance(position, prova.getQuestao(position));
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return prova.getNumQuest();
         }
     }

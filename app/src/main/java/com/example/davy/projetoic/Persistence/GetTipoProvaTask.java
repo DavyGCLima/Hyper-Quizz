@@ -63,6 +63,7 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
             Bundle bundle = new Bundle();
             bundle.putStringArrayList("lista", list);
             it.putExtras(bundle);
+            exibirProgress(false);
             context.startActivity(it);
         }else
             Toast.makeText(context, "Não foi possivel recuperar os dados", Toast.LENGTH_SHORT).show();
@@ -76,12 +77,6 @@ public class GetTipoProvaTask extends AsyncTask<Void, Void, ArrayList>{
         super.onProgressUpdate(values);
     }
 
-
-    @Override
-    protected void onCancelled() {
-        super.onCancelled();
-        Toast.makeText(context, "Nenhuma tipo de encontrado", Toast.LENGTH_SHORT);
-    }
 
     private void exibirProgress(boolean exibir) {
         progressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);

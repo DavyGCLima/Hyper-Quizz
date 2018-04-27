@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.davy.projetoic.ListaProvas;
 import com.example.davy.projetoic.QuestoesActivity;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
@@ -18,10 +19,10 @@ import java.io.IOException;
 
 public class GetProvaTask extends AsyncTask<String,Void,Prova> {
 
-    private Context context;
+    private ListaProvas context;
     private ProgressBar progressBar;
 
-    public GetProvaTask(Context context, ProgressBar progressBar) {
+    public GetProvaTask(ListaProvas context, ProgressBar progressBar) {
         this.context = context;
         this.progressBar = progressBar;
     }

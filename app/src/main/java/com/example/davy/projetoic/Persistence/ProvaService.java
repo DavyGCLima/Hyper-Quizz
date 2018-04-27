@@ -19,12 +19,14 @@ import java.util.ArrayList;
 
 
 /**
- * Created by reida on 02/03/2018.
+ * Created by Davy Lima on 02/03/2018.
  */
 
 public class ProvaService {
 
-    private static final String url = /*"http://172.16.44.2:8080/webServiceIC/serv";*/"http://10.0.2.2:8080/webServiceIC/serv";
+    private static final String url = "http://172.16.44.2:8080/webServiceIc/serv";
+                                        //"http://192.168.15.192:8080/webServiceIc/serv";
+                                        //"http://10.0.2.2:8080/webServiceIc/serv";
 
     public  static Prova getProva(String tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
@@ -53,6 +55,7 @@ public class ProvaService {
                 questao.setOptionE(q.optString("optionE"));
                 questao.setAnswer(q.optString("answer"));
                 questao.setImage(q.optString("image"));
+                final int lenthImage = q.optString("image").length();
                 pr.quests.add(questao);
             }
             return pr;
