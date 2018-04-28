@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
+import com.example.davy.projetoic.Persistence.GetImagemTask;
 import com.example.davy.projetoic.Persistence.Prova;
 
 
@@ -128,9 +129,7 @@ public class QuestoesActivity extends AppCompatActivity {
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         private ListView listQuests;
-
-        public questsFragment() {
-        }
+        private ImageView imageView;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -148,7 +147,8 @@ public class QuestoesActivity extends AppCompatActivity {
             args.putString("OPD", questoes.getOptionD());
             args.putString("OPE", questoes.getOptionE());
             args.putString("ANSWER" ,questoes.getAnswer());
-            args.putByteArray("IMG", questoes.getImage());
+            //args.putByteArray("IMG", questoes.getImage());
+            args.putString("IMGID", questoes.getImage());
             fragment.setArguments(args);
             return fragment;
         }
@@ -164,15 +164,17 @@ public class QuestoesActivity extends AppCompatActivity {
             quest.setMovementMethod(new ScrollingMovementMethod());
             quest.setText(getArguments().getString("BODY"));
 
-            ImageView imageView = rootView.findViewById(R.id.imageView);
+            imageView = rootView.findViewById(R.id.imageView);
             imageView.setVisibility(View.INVISIBLE);
-            if (getArguments().get("IMG") != null){
-                byte[] img = getArguments().getByteArray("IMG");
-                if(img != null) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-                    imageView.setImageBitmap(bitmap);
-                    imageView.setVisibility(View.VISIBLE);
+            if (getArguments().getString("IMGID") != null && !getArguments().getString("IMGID").equals("")){
+                //byte[] img = getArguments().getByteArray("IMG");
+                String simg = getArguments().getString("IMGID");
+                if(simg != null) {
+                    //busca no banco a imagem com o id
+                    new GetImagemTask(getContext(), imageView).execute(simg);
                 }
+            }else{
+                imageView.setVisibility(View.GONE);
             }
 
             listQuests = rootView.findViewById(R.id.list_quests);

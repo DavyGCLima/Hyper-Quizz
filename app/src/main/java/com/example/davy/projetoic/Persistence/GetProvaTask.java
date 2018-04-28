@@ -41,7 +41,11 @@ public class GetProvaTask extends AsyncTask<String,Void,Prova> {
             Bundle bundle = new Bundle();
             bundle.putSerializable("Prova", prova);
             it.putExtras(bundle);
-            context.startActivity(it);
+            try{
+                context.startActivity(it);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
             super.onPostExecute(prova);
         }else{
             Toast.makeText(context, "Erro ao efetuar o download", Toast.LENGTH_SHORT).show();
@@ -69,7 +73,7 @@ public class GetProvaTask extends AsyncTask<String,Void,Prova> {
         publishProgress();
         try {
             if(!AndroidUtils.isNeworkAvailble(context))
-                Toast.makeText(context, "Não foi possivel conectar-se a rede", Toast.LENGTH_SHORT).show();
+                return null;
             publishProgress();
             Prova prova = ProvaService.getProva(entrada[0], context);
             if(prova.equals(null))

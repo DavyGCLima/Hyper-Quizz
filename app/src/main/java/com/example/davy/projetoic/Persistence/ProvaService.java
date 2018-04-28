@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.example.davy.projetoic.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -24,9 +25,11 @@ import java.util.ArrayList;
 
 public class ProvaService {
 
-    private static final String url = "http://172.16.44.2:8080/webServiceIc/serv";
-                                        //"http://192.168.15.192:8080/webServiceIc/serv";
+    private static final String url = //"http://172.16.44.2:8080/webServiceIc/serv";
+                                        "http://192.168.15.192:8080/webServiceIc/serv";
                                         //"http://10.0.2.2:8080/webServiceIc/serv";
+    private static final int readTimeOut = 15000;
+    private static final int conectTimeOut = 15000;
 
     public  static Prova getProva(String tipoProva, Context context) throws Exception {
         //String prova = readFile(param, context);
@@ -55,12 +58,20 @@ public class ProvaService {
                 questao.setOptionE(q.optString("optionE"));
                 questao.setAnswer(q.optString("answer"));
                 questao.setImage(q.optString("image"));
-                final int lenthImage = q.optString("image").length();
                 pr.quests.add(questao);
             }
             return pr;
         }
         return null;
+    }
+
+    public static String getImagem(String imageId) throws Exception {
+        String json = getImagemQuest(imageId);
+        JSONObject img = new JSONObject(json);
+        if(img.has("ERRO"))
+            return null;
+        else
+            return img.getString("img");
     }
 
     private static String readFile(String jsonPath, Context context) throws FileNotFoundException {
@@ -141,8 +152,8 @@ public class ProvaService {
             conexao.setRequestMethod("POST");
             conexao.addRequestProperty("tipo","listarProvas");
             conexao.addRequestProperty("tipoProva",tipoProva);
-            conexao.setReadTimeout(15000);
-            conexao.setConnectTimeout(15000);
+            conexao.setReadTimeout(readTimeOut);
+            conexao.setConnectTimeout(conectTimeOut);
             conexao.connect();
 
             //valida a resposta
@@ -169,6 +180,47 @@ public class ProvaService {
         return retorno;
     }
 
+    private static String getImagemQuest(String imageId) throws Exception{
+        String retorno = "";
+        try{
+            //objetos
+            URL apiEnd = new URL(url);
+            int codigoResposta;
+            HttpURLConnection conexao;
+            InputStream is;
+
+            //coneção web
+            conexao = (HttpURLConnection) apiEnd.openConnection();
+            conexao.setRequestMethod("POST");
+            conexao.addRequestProperty("tipo","getImageQuest");
+            conexao.addRequestProperty("imageId", imageId);
+            conexao.setReadTimeout(readTimeOut);
+            conexao.setConnectTimeout(conectTimeOut);
+            //conexao.setRequestProperty();
+            conexao.connect();
+
+            //valida a resposta
+            codigoResposta = conexao.getResponseCode();
+            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
+                is = conexao.getInputStream();
+            }else{
+                is = conexao.getErrorStream();
+            }
+
+            retorno = converterInputStreamToString(is);
+            Log.i("Infome","INFORME ================ "+retorno);
+            if(retorno.equals(""))
+                throw new Exception("Erro na resposta do servidor");
+            is.close();
+            conexao.disconnect();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return retorno;
+    }
+
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
     private static String getJSONFromAPI(String url, String tipoReq, String extParam) throws Exception{
@@ -186,8 +238,8 @@ public class ProvaService {
             conexao.addRequestProperty("tipo",tipoReq);
             if(extParam != null)
                 conexao.addRequestProperty("idProva", extParam);
-            conexao.setReadTimeout(15000);
-            conexao.setConnectTimeout(15000);
+            conexao.setReadTimeout(readTimeOut);
+            conexao.setConnectTimeout(conectTimeOut);
             //conexao.setRequestProperty();
             conexao.connect();
 

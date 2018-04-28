@@ -53,7 +53,7 @@ public class Prova implements Serializable{
         protected String optionD;
         protected String optionE;
         protected String answer;
-        protected byte[] image;
+        protected String image;
 
         public Questoes() {
 
@@ -87,15 +87,15 @@ public class Prova implements Serializable{
             return answer;
         }
 
-        public byte[] getImage() {
-            if (image != null) {
+        public String getImage() {
+           /* if (image != null) {
                 //ByteArrayOutputStream out = new ByteArrayOutputStream();
                 //image.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 //byte[] img = out.toByteArray();
                 //return img;
                 return image;
-            }else
-                return null;
+            }else*/
+                return image;
         }
 
         public void setBody(String body) {
@@ -129,11 +129,12 @@ public class Prova implements Serializable{
         public void setImage(String image) throws Exception {
                 if(image.equals(""))
                     this.image = null;
-                byte[] decode = Base64.decode(image, Base64.DEFAULT);
+                //byte[] decode = Base64.decode(image, Base64.DEFAULT);
                 //Bitmap bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.length);
             //this.image = bitmap;
-            this.image = decode;
-
+            //this.image = decode;
+                else
+                    this.image = image;
         }
     }
 }
