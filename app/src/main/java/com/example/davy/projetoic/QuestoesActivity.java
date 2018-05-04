@@ -1,13 +1,9 @@
 package com.example.davy.projetoic;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,17 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
 import com.example.davy.projetoic.Persistence.GetImagemTask;
 import com.example.davy.projetoic.Persistence.Prova;
-
 
 public class QuestoesActivity extends AppCompatActivity {
 
@@ -43,12 +36,13 @@ public class QuestoesActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
     protected Prova prova;
+    static Integer acertos = 0;
+
+    public void setAcertos(Integer acertos) {
+        this.acertos = acertos;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +125,7 @@ public class QuestoesActivity extends AppCompatActivity {
         private ListView listQuests;
         private ImageView imageView;
 
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -164,6 +159,12 @@ public class QuestoesActivity extends AppCompatActivity {
             quest.setMovementMethod(new ScrollingMovementMethod());
             quest.setText(getArguments().getString("BODY"));
 
+            listQuests = rootView.findViewById(R.id.list_quests);
+            //quando criar o adapter, dever passar as opções e respostas
+            listQuests.setAdapter(new OptionsQuestAdapter(getContext(), getArguments().getString("OPA"),
+                    getArguments().getString("OPB"), getArguments().getString("OPC"),
+                    getArguments().getString("OPD"), getArguments().getString("OPE")));
+
             imageView = rootView.findViewById(R.id.imageView);
             imageView.setVisibility(View.INVISIBLE);
             if (getArguments().getString("IMGID") != null && !getArguments().getString("IMGID").equals("")){
@@ -177,17 +178,17 @@ public class QuestoesActivity extends AppCompatActivity {
                 imageView.setVisibility(View.GONE);
             }
 
-            listQuests = rootView.findViewById(R.id.list_quests);
-            //quando criar o adapter, dever passar as opções e respostas
-            listQuests.setAdapter(new OptionsQuestAdapter(getContext(), getArguments().getString("OPA"),
-                    getArguments().getString("OPB"), getArguments().getString("OPC"),
-                    getArguments().getString("OPD"), getArguments().getString("OPE")));
             listQuests.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 //seleciona a resposta
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     String s = (String) adapterView.getAdapter().getItem(i);
-                    Toast.makeText(getContext(), "Selecionado " + s, Toast.LENGTH_SHORT).show();
+                    String resposta = getArguments().getString("ANSWER").toLowerCase();
+                    String selecao = s.substring(0,1).toLowerCase();
+                    if(selecao.equals(resposta)) {
+                        acertos++;
+                        Toast.makeText(getActivity(), acertos.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             return rootView;

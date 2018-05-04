@@ -48,7 +48,7 @@ public class OptionsQuestAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup parent) {
         if(view != null){
             TextView t = (TextView) view.findViewById(R.id.rowTextOption);
-            t.setText(options.get(0));
+            t.setText(options.get(i));
             return view;
         }else {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
