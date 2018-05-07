@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class ProvaService {
 
-    private static final String url = "http://192.168.1.101:8080/webServiceIc/serv";
+    private static final String url = "http://192.168.15.235:8080/webServiceIc/serv";
                                         //"http://192.168.15.192:8080/webServiceIc/serv";
                                         //"http://10.0.2.2:8080/webServiceIc/serv";
     private static final int readTimeOut = 15000;
@@ -196,7 +196,6 @@ public class ProvaService {
             conexao.addRequestProperty("imageId", imageId);
             conexao.setReadTimeout(readTimeOut);
             conexao.setConnectTimeout(conectTimeOut);
-            //conexao.setRequestProperty();
             conexao.connect();
 
             //valida a resposta
@@ -240,7 +239,6 @@ public class ProvaService {
                 conexao.addRequestProperty("idProva", extParam);
             conexao.setReadTimeout(readTimeOut);
             conexao.setConnectTimeout(conectTimeOut);
-            //conexao.setRequestProperty();
             conexao.connect();
 
             //valida a resposta
