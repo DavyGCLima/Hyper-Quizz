@@ -31,4 +31,9 @@
     <string name="btnTipoProva">Escolher</string>
     <string name="NoConnectionStats">Não há conexão</string>
     <string name="btnSelecionar">Selecionar</string>
+    <string name="nome">Digite seu nome</string>
+    <string name="informeCaastro">O e-mail e senha digitados serão utilizados</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="logar">Logar</string>
+    <string name="semServicoRede">Não há conecxão</string>
 </resources>
