@@ -11,20 +11,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.davy.projetoic.Persistence.LoginService;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
-import java.nio.file.Files;
-
 public class Cadastro extends AppCompatActivity {
 
-    private CadastroTask mCadastroTask;
     private AutoCompleteTextView mNome;
-    private TextView mTextView;
     private Bundle extras;
 
     @Override
@@ -33,8 +27,8 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         extras = getIntent().getExtras();
         mNome = findViewById(R.id.nomeCadastro);
-        mTextView = findViewById(R.id.textoAuxiliar);
-        Button btnCadastro = findViewById(R.id.btnNomeCadastro);
+        //TextView TextView = findViewById(R.id.textoAuxiliar);
+        Button btnCadastro = findViewById(R.id.btnCadastro);
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +40,7 @@ public class Cadastro extends AppCompatActivity {
 
     private void cadastrar(String nome, String email, String senha) {
         if (isValidName(nome)) {
-            mCadastroTask = new CadastroTask(email, senha, nome);
+            CadastroTask mCadastroTask = new CadastroTask(email, senha, nome);
             mCadastroTask.execute();
         }
 
@@ -88,10 +82,10 @@ public class Cadastro extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result.equals("1")) {
+            if (!result.equals("Cadastrado")) {
                 try {
                     //realizar login
-                    LoginService.logar(Cadastro.this);
+                    LoginService.openMainActivity(Cadastro.this);
                 } catch (Exception e) {
                     e.printStackTrace();
 

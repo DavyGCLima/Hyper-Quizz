@@ -19,7 +19,7 @@ public class LoginService {
     /**
      * URL de conexão com o servidor
      */
-    private static final String url = "http://192.168.15.235:8080/webServiceIc/serv";
+    private static final String url = "http://192.168.1.101:8080/webServiceIc/serv";
                                         //"http://192.168.15.192:8080/webServiceIc/serv";
                                         //"http://10.0.2.2:8080/webServiceIc/serv";
     private static final int readTimeOut = 15000;
@@ -117,7 +117,7 @@ public class LoginService {
         return retorno;
     }
 
-    public static void logar(Activity context){
+    public static void openMainActivity(Activity context){
         Intent it = new Intent(context, HomeActivity.class);
         context.startActivity(it);
     }

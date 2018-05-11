@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +95,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        Button btnLogar = (Button)findViewById(R.id.btnNovoCadastro);
+        btnLogar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSingIn();
+            }
+        });
     }
 
     private void populateAutoComplete() {
@@ -140,6 +148,47 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    private void openSingIn(){
+        if (mAuthTask != null) {
+            return;
+        }
+        mEmailView.setError(null);
+        mPasswordView.setError(null);
+
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
+            cancel = true;
+        } else if (!isEmailValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            Intent it = new Intent(this, Cadastro.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("email", mEmailView.getText().toString());
+            bundle.putString("senha", mPasswordView.getText().toString());
+            it.putExtras(bundle);
+            this.startActivity(it);
+        }
+
+    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -342,7 +391,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (success) {
                 //realiza login
                 finish();
-                LoginService.logar(LoginActivity.this);
+                LoginService.openMainActivity(LoginActivity.this);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
