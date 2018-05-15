@@ -18,6 +18,7 @@
     <string name="action_sign_in_short">Logar</string>
     <string name="error_invalid_email">Este e-mail é inválido</string>
     <string name="error_invalid_password">Senha muito curta</string>
+    <string name="error_invalid_name">Nome muito curto</string>
     <string name="error_incorrect_password">Senha incorreta</string>
     <string name="error_field_required">Campo Rquerido</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
@@ -25,9 +26,13 @@
     </string>
     <string name="title_activity_profile">Perfil</string>
     <string name="title_activity_questoes">Questões</string>
+
     <string name="ErroConvertImg">Erro ao converter imagem</string>
     <string name="erroCarregaJson">Houve um erro ao carregar dados do banco</string>
     <string name="erroCarregaJsonInesperado">Houve um erro inesperado ao carregar dados do banco</string>
+    <string name="erroInesperadoCarregaMainAct">Houve um erro inesperado ao tentar iniciar a aplicação</string>
+    <string name="erroComectarServidor">Houve um erro ao tentar conectar com o servidor</string>
+
     <string name="btnTipoProva">Escolher</string>
     <string name="NoConnectionStats">Não há conexão</string>
     <string name="btnSelecionar">Selecionar</string>

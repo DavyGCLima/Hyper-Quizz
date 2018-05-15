@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class Cadastro extends AppCompatActivity {
         extras = getIntent().getExtras();
         mNome = findViewById(R.id.nomeCadastro);
         //TextView TextView = findViewById(R.id.textoAuxiliar);
-        Button btnCadastro = findViewById(R.id.btnCadastro);
+        final Button btnCadastro = findViewById(R.id.btnCadastro);
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,13 +39,28 @@ public class Cadastro extends AppCompatActivity {
 
     }
 
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        finish();
+    }
+
     private void cadastrar(String nome, String email, String senha) {
+        View focusView = null;
+        mNome.setError(null);
         if (isValidName(nome)) {
             CadastroTask mCadastroTask = new CadastroTask(email, senha, nome);
             mCadastroTask.execute();
+        }else{
+            focusView = mNome;
+            mNome.setError(getString(R.string.error_invalid_name));
+            focusView.requestFocus();
         }
-
-
     }
 
     private boolean isValidName(String nome) {
@@ -73,31 +89,42 @@ public class Cadastro extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                return LoginService.cadastrar(mNome, mEmail, mPassword);
+                String retorno = LoginService.cadastrar(mNome, mEmail, mPassword);
+                return retorno;
             } catch (Exception e) {
                 e.printStackTrace();
+                onCancelled(getString(R.string.erroComectarServidor));
             }
             return getString(R.string.erroCarregaJsonInesperado);
         }
 
         @Override
         protected void onPostExecute(String result) {
-            if (!result.equals("Cadastrado")) {
+            if (result.equals("Cadastrado")) {
                 try {
                     //realizar login
                     LoginService.openMainActivity(Cadastro.this);
                 } catch (Exception e) {
                     e.printStackTrace();
-
+                    String s = getString(R.string.erroInesperadoCarregaMainAct);
+                    new AlertDialogFragment(s).show(Cadastro.this.getFragmentManager(), "alert");
                 }
-            }
+            }else if(result.equals("Usuário já existe"))
+                new AlertDialogFragment(result).show(Cadastro.this.getFragmentManager(), "alert");
             super.onPostExecute(result);
+        }
+
+        @Override
+        protected void onCancelled(String s) {
+            System.out.println("INFO =====>>>> onCancelled");
+            new AlertDialogFragment(s).show(Cadastro.this.getFragmentManager(), "alert");
+            super.onCancelled(s);
         }
     }
 
 
     @SuppressLint("ValidFragment")
-    public class AlertDialogFragment extends DialogFragment {
+    public static class AlertDialogFragment extends DialogFragment {
         String mMessege;
 
         public AlertDialogFragment(String mMessege) {

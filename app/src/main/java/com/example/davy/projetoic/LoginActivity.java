@@ -181,6 +181,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView.requestFocus();
         } else {
             Intent it = new Intent(this, Cadastro.class);
+            it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             Bundle bundle = new Bundle();
             bundle.putString("email", mEmailView.getText().toString());
             bundle.putString("senha", mPasswordView.getText().toString());

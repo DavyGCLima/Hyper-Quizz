@@ -27,6 +27,10 @@ import com.example.davy.projetoic.Persistence.Prova;
 
 public class QuestoesActivity extends AppCompatActivity {
 
+    static Integer acertos = 0;
+    static String[] answers;
+    private static ViewPager mViewPager;
+    protected Prova prova;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -36,51 +40,53 @@ public class QuestoesActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
-    protected Prova prova;
-    static Integer acertos = 0;
 
-    public void setAcertos(Integer acertos) {
-        this.acertos = acertos;
+    public static void nextPage(){
+        mViewPager.setCurrentItem(mViewPager.getCurrentItem()+1);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questoes);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         try {
-            //deverá ser colocado aqui o aprametro para qual prova deve ser carregada
-            //Prova prova = ProvaService.getProva(R.string.enem, this);
-
-            //parametro do execute é o tipo da prova R.string.enad
-
-
-            Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
+            assert extras != null;
             prova = (Prova)extras.getSerializable("Prova");
-            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
+        if(savedInstanceState == null) {
+            acertos = 0;
+            answers = new String[prova.getNumQuest()];
+        }else {
+            acertos = savedInstanceState.getInt("acertos");
+            answers = savedInstanceState.getStringArray("answers");
+        }
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-            // Set up the ViewPager with the sections adapter.
-            mViewPager = (ViewPager) findViewById(R.id.container);
-            mViewPager.setOffscreenPageLimit(2);
-            mViewPager.setAdapter(mSectionsPagerAdapter);
-
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         }catch (Exception e){
             e.printStackTrace();
             Log.e("Erro No APP: ", e.getMessage());
+            finish();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("acertos", acertos);
+        outState.putStringArray("answers", answers);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -110,7 +116,6 @@ public class QuestoesActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * A placeholder fragment containing a simple view.
@@ -189,6 +194,7 @@ public class QuestoesActivity extends AppCompatActivity {
                         acertos++;
                         Toast.makeText(getActivity(), acertos.toString(), Toast.LENGTH_SHORT).show();
                     }
+                    nextPage();
                 }
             });
             return rootView;
