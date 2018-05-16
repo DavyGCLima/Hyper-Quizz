@@ -13,25 +13,60 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_fim_prova_acertos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/acertos_fim_prova" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text_fim_prova_acertos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="@string/acertos_fim_prova" />
 
-        <TextView
-            android:id="@+id/text_fim_prova_erros"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/text_fim_prova_erros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:text="@string/erros_fim_prova" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/erros_fim_prova" />
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin">
+
+            <TextView
+                android:id="@+id/legenda_finaliza_prova_num_questoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numQuestao"/>
+
+            <TextView
+                android:id="@+id/legenda_finaliza_prova_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textSelect"
+                android:layout_marginStart="30dp"/>
+
+            <TextView
+                android:id="@+id/legenda_finaliza_prova_gabarito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textGabarito"
+                android:layout_marginStart="40dp"/>
+
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/gabarito_fim_prova"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/text_margin" />
+            android:layout_margin="@dimen/text_margin"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

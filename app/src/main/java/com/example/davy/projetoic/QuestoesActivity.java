@@ -59,7 +59,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
         }
         Intent it = new Intent(this, FinalizaProva.class);
         it.putExtra("acertos", acertos.toString());
-        int erros = (acertos - prova.getNumQuest());
+        int erros = (prova.getNumQuest() - acertos);
         it.putExtra("erros", String.valueOf(erros));
         it.putStringArrayListExtra("options", options);
         it.putExtra("answers", mAnswers);

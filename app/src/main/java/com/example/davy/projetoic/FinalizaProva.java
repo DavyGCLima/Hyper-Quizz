@@ -9,6 +9,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,14 +29,19 @@ public class FinalizaProva extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TextView acertos = findViewById(R.id.text_fim_prova_acertos);
-        acertos.setText(getIntent().getStringExtra("acertos"));
+        acertos.setText(new StringBuilder().append(
+                getString(R.string.acertos_fim_prova)).append(
+                        getIntent().getStringExtra("acertos")).toString());
         TextView erros = findViewById(R.id.text_fim_prova_erros);
-        erros.setText(getIntent().getStringExtra("erros"));
+        erros.setText(new StringBuilder().append(
+                getString(R.string.erros_fim_prova)).append(
+                        getIntent().getStringExtra("erros")).toString());
 
         mRecyclerView = findViewById(R.id.gabarito_fim_prova);
-        mRecyclerView.setAdapter(new GabaritoAdapter(getIntent().getStringArrayExtra("answers")
-                , getIntent().getStringArrayListExtra("options"), this));
-        //mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        GabaritoAdapter gabaritoAdapter = new GabaritoAdapter(getIntent().getStringArrayExtra("answers")
+                , getIntent().getStringArrayListExtra("options"), this);
+        mRecyclerView.setAdapter(gabaritoAdapter);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         );

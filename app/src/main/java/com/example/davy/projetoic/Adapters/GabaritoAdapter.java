@@ -15,9 +15,9 @@ import com.example.davy.projetoic.R;
 import java.util.ArrayList;
 
 public class GabaritoAdapter extends RecyclerView.Adapter {
-    String[] mAnswers;
-    ArrayList<String> mOptions;
-    Context mContext;
+    private String[] mAnswers;
+    private ArrayList<String> mOptions;
+    private Context mContext;
 
     public GabaritoAdapter(String[] answers, ArrayList<String> options, Context context) {
         this.mAnswers = answers;
@@ -49,7 +49,7 @@ public class GabaritoAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mOptions.size();
     }
 
     protected class ViewHolderGabarito extends RecyclerView.ViewHolder{
