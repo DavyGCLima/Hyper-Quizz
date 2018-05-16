@@ -26,12 +26,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/ListaProvas.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/ListaProvas.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/gabarito_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/gabarito_row.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,12 +64,22 @@
       <file leaf-file-name="FinalizaProva.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
               <folding>
-                <element signature="e#1226#1263#0" expanded="true" />
-                <element signature="e#1481#1516#0" expanded="true" />
+                <element signature="e#1344#1381#0" expanded="true" />
+                <element signature="e#1723#1758#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,12 +87,12 @@
       <file leaf-file-name="GabaritoAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="911">
-              <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
+            <state relative-caret-position="197">
+              <caret line="46" column="72" lean-forward="false" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1748#1749#0" expanded="true" />
-                <element signature="e#1786#1787#0" expanded="true" />
+                <element signature="e#2121#2122#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,22 +119,22 @@
       <file leaf-file-name="content_finaliza_prova.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="65" column="48" lean-forward="true" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
+            <state relative-caret-position="120">
+              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
                 <element signature="e#354#394#0" expanded="true" />
-                <element signature="e#973#993#0" expanded="true" />
-                <element signature="e#1023#1050#0" expanded="true" />
-                <element signature="e#1280#1300#0" expanded="true" />
-                <element signature="e#1342#1362#0" expanded="true" />
-                <element signature="e#1392#1417#0" expanded="true" />
-                <element signature="e#1605#1625#0" expanded="true" />
-                <element signature="e#1663#1683#0" expanded="true" />
-                <element signature="e#1721#1741#0" expanded="true" />
-                <element signature="e#1970#1990#0" expanded="true" />
-                <element signature="e#2214#2234#0" expanded="true" />
-                <element signature="e#2510#2532#0" expanded="true" />
-                <element signature="e#2839#2859#0" expanded="true" />
+                <element signature="e#974#994#0" expanded="true" />
+                <element signature="e#1024#1051#0" expanded="true" />
+                <element signature="e#1331#1351#0" expanded="true" />
+                <element signature="e#1393#1413#0" expanded="true" />
+                <element signature="e#1443#1468#0" expanded="true" />
+                <element signature="e#1703#1723#0" expanded="true" />
+                <element signature="e#1761#1781#0" expanded="true" />
+                <element signature="e#1819#1839#0" expanded="true" />
+                <element signature="e#2068#2088#0" expanded="true" />
+                <element signature="e#2312#2332#0" expanded="true" />
+                <element signature="e#2608#2630#0" expanded="true" />
+                <element signature="e#2937#2957#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -4022,14 +4028,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/ListaProvas.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/gabarito_row.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java" />
       </list>
     </option>
   </component>
@@ -4115,7 +4121,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence" />
     <property name="android.profiler.active" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1526489423345" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1526490211569" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1524660873042" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.1.1" />
   </component>
@@ -4478,7 +4484,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15355521" sideWeight="0.51282054" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53162396" sideWeight="0.5045386" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2636778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2624811" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5435898" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4918,17 +4924,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#1226#1263#0" expanded="true" />
-            <element signature="e#1481#1516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_option.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -5001,8 +4996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="120" column="30" lean-forward="false" selection-start-line="120" selection-start-column="30" selection-end-line="120" selection-end-column="30" />
+        <state relative-caret-position="356">
+          <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -5025,22 +5020,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="65" column="48" lean-forward="true" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
+        <state relative-caret-position="120">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="e#354#394#0" expanded="true" />
-            <element signature="e#973#993#0" expanded="true" />
-            <element signature="e#1023#1050#0" expanded="true" />
-            <element signature="e#1280#1300#0" expanded="true" />
-            <element signature="e#1342#1362#0" expanded="true" />
-            <element signature="e#1392#1417#0" expanded="true" />
-            <element signature="e#1605#1625#0" expanded="true" />
-            <element signature="e#1663#1683#0" expanded="true" />
-            <element signature="e#1721#1741#0" expanded="true" />
-            <element signature="e#1970#1990#0" expanded="true" />
-            <element signature="e#2214#2234#0" expanded="true" />
-            <element signature="e#2510#2532#0" expanded="true" />
-            <element signature="e#2839#2859#0" expanded="true" />
+            <element signature="e#974#994#0" expanded="true" />
+            <element signature="e#1024#1051#0" expanded="true" />
+            <element signature="e#1331#1351#0" expanded="true" />
+            <element signature="e#1393#1413#0" expanded="true" />
+            <element signature="e#1443#1468#0" expanded="true" />
+            <element signature="e#1703#1723#0" expanded="true" />
+            <element signature="e#1761#1781#0" expanded="true" />
+            <element signature="e#1819#1839#0" expanded="true" />
+            <element signature="e#2068#2088#0" expanded="true" />
+            <element signature="e#2312#2332#0" expanded="true" />
+            <element signature="e#2608#2630#0" expanded="true" />
+            <element signature="e#2937#2957#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -5048,14 +5043,25 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+          <folding>
+            <element signature="e#1344#1381#0" expanded="true" />
+            <element signature="e#1723#1758#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="911">
-          <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
+        <state relative-caret-position="197">
+          <caret line="46" column="72" lean-forward="false" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1748#1749#0" expanded="true" />
-            <element signature="e#1786#1787#0" expanded="true" />
+            <element signature="e#2121#2122#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
           </folding>
         </state>
       </provider>

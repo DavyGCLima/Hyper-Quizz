@@ -1,6 +1,8 @@
 package com.example.davy.projetoic.Adapters;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,15 +34,20 @@ public class GabaritoAdapter extends RecyclerView.Adapter {
         return holder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolderGabarito h = (ViewHolderGabarito) holder;
         h.mNameQuest.setText(String.valueOf(position+1));
         h.mOptionSelect.setText(mAnswers[position]);
         h.mAnswer.setText(mOptions.get(position));
+        if(mAnswers[position].toLowerCase().equals(mOptions.get(position).toLowerCase()))
+            h.mOptionSelect.setTextColor(mContext.getColor(R.color.approved));
+        else
+            h.mOptionSelect.setTextColor(mContext.getColor(R.color.error));
         try{
-            YoYo.with(Techniques.FadeInDown)
-                    .duration(700)
+            YoYo.with(Techniques.RollIn)
+                    .duration(1000)
                     .playOn(h.itemView);
         }catch(Exception e){
             Toast.makeText(mContext, "Ocorreu um erro na animação", Toast.LENGTH_SHORT).show();

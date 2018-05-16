@@ -116,8 +116,8 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_finaliza_prova">FinalizaProva</string>
-    <string name="erros_fim_prova">Erros:</string>
-    <string name="acertos_fim_prova">Acertos:</string>
+    <string name="erros_fim_prova">Erros </string>
+    <string name="acertos_fim_prova">Acertos </string>
     <string name="numQuestao">Questão</string>
     <string name="textSelect">Opção</string>
     <string name="textGabarito">Gabarito</string>

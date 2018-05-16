@@ -1,6 +1,8 @@
 package com.example.davy.projetoic;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,7 @@ public class FinalizaProva extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +33,13 @@ public class FinalizaProva extends AppCompatActivity {
 
         TextView acertos = findViewById(R.id.text_fim_prova_acertos);
         acertos.setText(new StringBuilder().append(
-                getString(R.string.acertos_fim_prova)).append(
+                getString(R.string.acertos_fim_prova)).append(": ").append(
                         getIntent().getStringExtra("acertos")).toString());
+        acertos.setTextColor(getColor(R.color.approved));
         TextView erros = findViewById(R.id.text_fim_prova_erros);
+        erros.setTextColor(getColor(R.color.error));
         erros.setText(new StringBuilder().append(
-                getString(R.string.erros_fim_prova)).append(
+                getString(R.string.erros_fim_prova)).append(": ").append(
                         getIntent().getStringExtra("erros")).toString());
 
         mRecyclerView = findViewById(R.id.gabarito_fim_prova);
