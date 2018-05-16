@@ -1,6 +1,5 @@
 package com.example.davy.projetoic.Adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.davy.projetoic.Interfaces.RecyclerViewClickListener;
 import com.example.davy.projetoic.ListaProvas;
-import com.example.davy.projetoic.Persistence.GetProvaTask;
 import com.example.davy.projetoic.R;
 
 import java.util.ArrayList;
@@ -31,13 +29,13 @@ public class ListaProvaAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_line_lista_provas, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        ViewHolderProvaAdapter holder = new ViewHolderProvaAdapter(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ViewHolder h = (ViewHolder) holder;
+        ViewHolderProvaAdapter h = (ViewHolderProvaAdapter) holder;
         h.nome.setText(lista.get(position).get(2));
         try{
             YoYo.with(Techniques.FadeInDown)
@@ -57,11 +55,11 @@ public class ListaProvaAdapter extends RecyclerView.Adapter {
         mRecyclerViewClickListener = listener;
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    protected class ViewHolderProvaAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //parametros da lista
         TextView nome;
-        public ViewHolder(View itemView) {
+        public ViewHolderProvaAdapter(View itemView) {
             super(itemView);
             nome = itemView.findViewById(R.id.textListaProva);
             itemView.setOnClickListener(this);

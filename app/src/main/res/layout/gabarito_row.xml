@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_questao_gabarito"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/txtQuestao" />
+
+        <TextView
+            android:id="@+id/text_questao_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="@dimen/text_margin"
+            android:text="X"/>
+
+        <TextView
+            android:id="@+id/text_questao_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginLeft="32dp"
+            android:text="X"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
