@@ -32,6 +32,7 @@
     <string name="erroCarregaJsonInesperado">Houve um erro inesperado ao carregar dados do banco</string>
     <string name="erroInesperadoCarregaMainAct">Houve um erro inesperado ao tentar iniciar a aplicação</string>
     <string name="erroComectarServidor">Houve um erro ao tentar conectar com o servidor</string>
+    <string name="errorResponseFromServer">Houve um erro na resposta do servidor</string>
 
     <string name="btnTipoProva">Escolher</string>
     <string name="NoConnectionStats">Não há conexão</string>
@@ -121,5 +122,6 @@
     <string name="numQuestao">Questão</string>
     <string name="textSelect">Opção</string>
     <string name="textGabarito">Gabarito</string>
+    <string name="updateData">Dados Atualizados</string>
 
 </resources>

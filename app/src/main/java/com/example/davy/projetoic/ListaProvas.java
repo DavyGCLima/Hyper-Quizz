@@ -6,15 +6,13 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.davy.projetoic.Adapters.ListaProvaAdapter;
 import com.example.davy.projetoic.Interfaces.RecyclerViewClickListener;
-import com.example.davy.projetoic.Persistence.GetProvaTask;
+import com.example.davy.projetoic.Persistence.tasks.GetProvaTask;
 
 import java.util.ArrayList;
 

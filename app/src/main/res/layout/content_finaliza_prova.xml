@@ -15,7 +15,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin"
+            android:layout_marginEnd="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/text_fim_prova_acertos"
@@ -29,8 +33,7 @@
                 android:id="@+id/text_fim_prova_erros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/text_margin"
-                android:layout_marginTop="@dimen/text_margin"
+                android:layout_margin="@dimen/text_margin"
                 android:text="@string/erros_fim_prova"
                 tools:textColor="@color/error" />
 
@@ -41,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_margin"
             android:layout_marginEnd="@dimen/text_margin"
-            android:layout_marginTop="@dimen/text_margin">
+            android:layout_marginTop="@dimen/text_margin"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/legenda_finaliza_prova_num_questoes"

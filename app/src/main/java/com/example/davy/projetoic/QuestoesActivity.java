@@ -2,6 +2,7 @@ package com.example.davy.projetoic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,9 +26,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.davy.projetoic.Adapters.OptionsQuestAdapter;
 import com.example.davy.projetoic.Interfaces.ContainerViewPager;
-import com.example.davy.projetoic.Persistence.GetImagemTask;
+import com.example.davy.projetoic.Persistence.DBService;
+import com.example.davy.projetoic.Persistence.tasks.GetImagemTask;
+import com.example.davy.projetoic.Persistence.UserService;
 import com.example.davy.projetoic.Persistence.Prova;
+import com.example.davy.projetoic.utils.AlertDialogFragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -38,6 +43,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
     static String[] mAnswers;
     private ViewPager mViewPager;
     protected Prova prova;
+    AsyncTask<Void, Void, String> task;
 
     @Override
     public void nextPage(){
@@ -57,6 +63,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
                 acertos++;
             options.add(prova.getQuestao(i).getAnswer());
         }
+        task = new atualizaEstatisticaUsuarioTask(acertos, (prova.getNumQuest() - acertos), this).execute();
         Intent it = new Intent(this, FinalizaProva.class);
         it.putExtra("acertos", acertos.toString());
         int erros = (prova.getNumQuest() - acertos);
@@ -125,6 +132,13 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, String.valueOf(prova.getNumQuest()), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(task != null)
+            task.cancel(true);
     }
 
     @Override
@@ -275,4 +289,38 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
         }
     }
 
+    private class atualizaEstatisticaUsuarioTask extends AsyncTask<Void, Void, String>{
+
+        int acertos;
+        int erros;
+        QuestoesActivity mContext;
+
+        public atualizaEstatisticaUsuarioTask(int acertos, int erros, QuestoesActivity context) {
+            this.acertos = acertos;
+            this.erros = erros;
+            this.mContext = context;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                DBService db = new DBService(mContext);
+                final String[] user = db.getUser();
+                String email = user[1];
+                String retorno = UserService.saveDataAfterTest(acertos, erros, email, mContext);
+                return retorno;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return mContext.getString(R.string.erroComectarServidor);
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(!s.equals("ok") && !mContext.isFinishing() && isCancelled()){
+                new AlertDialogFragment(s).show(QuestoesActivity.this.getFragmentManager(), "alert");
+            }
+        }
+    }
 }

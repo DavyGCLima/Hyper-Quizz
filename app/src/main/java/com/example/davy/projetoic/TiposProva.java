@@ -1,19 +1,16 @@
 package com.example.davy.projetoic;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.davy.projetoic.Persistence.GetListaProvasTask;
+import com.example.davy.projetoic.Persistence.tasks.GetListaProvasTask;
 
 import java.util.ArrayList;
 

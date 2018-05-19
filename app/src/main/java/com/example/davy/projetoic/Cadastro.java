@@ -1,20 +1,17 @@
 package com.example.davy.projetoic;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.davy.projetoic.Persistence.LoginService;
+import com.example.davy.projetoic.Persistence.DBService;
+import com.example.davy.projetoic.Persistence.UserService;
+import com.example.davy.projetoic.utils.AlertDialogFragment;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
 public class Cadastro extends AppCompatActivity {
@@ -54,7 +51,7 @@ public class Cadastro extends AppCompatActivity {
         View focusView = null;
         mNome.setError(null);
         if (isValidName(nome)) {
-            CadastroTask mCadastroTask = new CadastroTask(email, senha, nome);
+            CadastroTask mCadastroTask = new CadastroTask(email, senha, nome, this);
             mCadastroTask.execute();
         }else{
             focusView = mNome;
@@ -72,11 +69,13 @@ public class Cadastro extends AppCompatActivity {
         private final String mEmail;
         private final String mPassword;
         private final String mNome;
+        private Context mContext;
 
-        CadastroTask(String email, String senha, String nome) {
+        CadastroTask(String email, String senha, String nome, Context context) {
             mEmail = email;
             mPassword = senha;
             mNome = nome;
+            mContext = context;
         }
 
         @Override
@@ -89,7 +88,7 @@ public class Cadastro extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                String retorno = LoginService.cadastrar(mNome, mEmail, mPassword);
+                String retorno = UserService.cadastrar(mNome, mEmail, mPassword);
                 return retorno;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,7 +102,9 @@ public class Cadastro extends AppCompatActivity {
             if (result.equals("Cadastrado")) {
                 try {
                     //realizar login
-                    LoginService.openMainActivity(Cadastro.this);
+                    DBService db = new DBService(mContext);
+                    db.insert(mEmail, mPassword);
+                    UserService.openMainActivity(Cadastro.this);
                 } catch (Exception e) {
                     e.printStackTrace();
                     String s = getString(R.string.erroInesperadoCarregaMainAct);
@@ -123,25 +124,5 @@ public class Cadastro extends AppCompatActivity {
     }
 
 
-    @SuppressLint("ValidFragment")
-    public static class AlertDialogFragment extends DialogFragment {
-        String mMessege;
 
-        public AlertDialogFragment(String mMessege) {
-            this.mMessege = mMessege;
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(mMessege)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            AlertDialogFragment.this.dismiss();
-                        }
-                    });
-            return builder.create();
-        }
-    }
 }

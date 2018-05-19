@@ -3,6 +3,7 @@ package com.example.davy.projetoic;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -30,7 +31,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.davy.projetoic.Persistence.LoginService;
+import com.example.davy.projetoic.Persistence.DBService;
+import com.example.davy.projetoic.Persistence.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -238,18 +240,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email, password, this);
             mAuthTask.execute((Void) null);
         }
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -351,37 +351,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         private final String mEmail;
         private final String mPassword;
+        Context mContext;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String email, String password, Context context) {
             mEmail = email;
             mPassword = password;
+            mContext = context;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
             try {
                 // Simulate network access.
-                return LoginService.valdiarAcesso(mEmail, mPassword);
+                return UserService.valdiarAcesso(mEmail, mPassword);
             } catch (InterruptedException e) {
                 return false;
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
             }
-
-            //para credenciais fixas
-            /*for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }*/
-
-            // TODO: register the new account here.
-            //return true;
         }
 
         @Override
@@ -391,8 +379,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 //realiza login
+                DBService db = new DBService(mContext);
+                String[] user = db.getUser();
+                if(user.length > 0 && !user[1].equals(mEmail))
+                    db.update(mEmail, mPassword);
+                else if(user.length != 1)
+                    db.insert(mEmail, mPassword);
                 finish();
-                LoginService.openMainActivity(LoginActivity.this);
+                UserService.openMainActivity(LoginActivity.this);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
