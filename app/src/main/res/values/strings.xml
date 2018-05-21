@@ -124,4 +124,7 @@
     <string name="textGabarito">Gabarito</string>
     <string name="updateData">Dados Atualizados</string>
 
+    <string name="titleListaProvas">Selecione uma prova</string>
+    <string name="title_tipo_prova">Selecione uma modalidade de prova</string>
+
 </resources>

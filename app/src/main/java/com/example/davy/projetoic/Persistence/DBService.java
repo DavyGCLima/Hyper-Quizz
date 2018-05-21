@@ -14,6 +14,7 @@ public class DBService {
     }
 
     public void insert(String email, String password){
+        System.out.println(" >>>>>>>>> INSERT ");
         ContentValues values = new ContentValues();
         values.put("email", email);
         values.put("password", password);
@@ -22,6 +23,7 @@ public class DBService {
     }
 
     public int update(String email, String password){
+        System.out.println(" >>>>>>>>> UPDATE ");
         ContentValues values = new ContentValues();
         values.put("email", email);
         values.put("password", password);
@@ -30,6 +32,10 @@ public class DBService {
     }
 
 
+    /**
+     * Retorna o único usuário corrente possivel
+     * @return _id, email and password do usuário corrente
+     */
     public String[] getUser(){
         Cursor cursor = db.query(BDcache.TABLE, BDcache.COLUMS, null, null
                 , null, null, null);

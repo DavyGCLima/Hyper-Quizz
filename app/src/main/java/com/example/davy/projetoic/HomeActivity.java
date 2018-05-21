@@ -1,6 +1,8 @@
 package com.example.davy.projetoic;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.davy.projetoic.Persistence.DBService;
 import com.example.davy.projetoic.Persistence.tasks.GetTipoProvaTask;
 
 public class HomeActivity extends AppCompatActivity
@@ -35,6 +39,13 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         progressBar = findViewById(R.id.progressBrar);
         progressBar.setVisibility(View.GONE);
+
+        DBService db = new DBService(this);
+        String[] user = db.getUser();
+
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_home);
+        TextView emailUser = headerView.findViewById(R.id.email_perfil_nav);
+        emailUser.setText(user[1]);
     }
 
     @Override
