@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BDcache extends SQLiteOpenHelper {
     public static final String DB_NAME = "DBCache";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
     public static final String TABLE = "user";
-    public static  final String[] COLUMS = new String[]{"_id", "email", "password"};
+    public static  final String[] COLUMS = new String[]{"_id", "email", "token"};
 
 
     public BDcache(Context context) {
@@ -18,7 +18,7 @@ public class BDcache extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+TABLE+"(_id INTEGER PRIMARY KEY AUTOINCREMENT"+
-                ", email TEXT NOT NULL, password TEXT NOT NULL)");
+                ", email TEXT NOT NULL, token TEXT NOT NULL)");
     }
 
     @Override

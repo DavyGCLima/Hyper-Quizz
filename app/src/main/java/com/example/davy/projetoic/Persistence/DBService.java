@@ -17,7 +17,7 @@ public class DBService {
         System.out.println(" >>>>>>>>> INSERT ");
         ContentValues values = new ContentValues();
         values.put("email", email);
-        values.put("password", password);
+        values.put("token", password);
 
         db.insert(BDcache.TABLE, null, values);
     }
@@ -26,7 +26,7 @@ public class DBService {
         System.out.println(" >>>>>>>>> UPDATE ");
         ContentValues values = new ContentValues();
         values.put("email", email);
-        values.put("password", password);
+        values.put("token", password);
 
         return db.update(BDcache.TABLE, values, "_id = 1", null);
     }
@@ -34,7 +34,7 @@ public class DBService {
 
     /**
      * Retorna o único usuário corrente possivel
-     * @return _id, email and password do usuário corrente
+     * @return _id, email and token from current user
      */
     public String[] getUser(){
         Cursor cursor = db.query(BDcache.TABLE, BDcache.COLUMS, null, null

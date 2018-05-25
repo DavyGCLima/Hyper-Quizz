@@ -346,7 +346,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTask extends AsyncTask<Void, Void, String> {
 
         private final String mEmail;
         private final String mPassword;
@@ -359,31 +359,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected String doInBackground(Void... params) {
             try {
                 // Simulate network access.
                 return UserService.valdiarAcesso(mEmail, mPassword);
             } catch (InterruptedException e) {
-                return false;
+                return "interrupted";
             } catch (Exception e) {
                 e.printStackTrace();
-                return false;
+                return "error";
             }
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final String response) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (!response.equals("interrupted") && !response.equals("error")) {
                 //realiza login
                 DBService db = new DBService(mContext);
                 String[] user = db.getUser();
-                if(user.length > 0 && !user[1].equals(mEmail))
-                    db.update(mEmail, mPassword);
+                if(user.length > 0 && !user[1].equals(mEmail) )
+                    db.update(mEmail, response);
+                else if(user[1].equals(mEmail) && !user[2].equals(response))
+                    db.update(mEmail, response);
                 else if(user.length != 1)
-                    db.insert(mEmail, mPassword);
+                    db.insert(mEmail, response);
                 finish();
                 UserService.openMainActivity(LoginActivity.this);
             } else {

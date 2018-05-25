@@ -31,10 +31,10 @@ public class ProvaService {
     private static final int readTimeOut = 15000;
     private static final int conectTimeOut = 15000;
 
-    public  static Prova getProva(String tipoProva, Context context) throws Exception {
+    public  static Prova getProva(String tipoProva, String token, Context context) throws Exception {
         //String prova = readFile(param, context);
         //faz a requisição
-        String prova = getJSONFromAPI(url, "buscarProva",tipoProva);
+        String prova = getJSONFromAPI(url, "buscarProva", token,tipoProva);
         //constroi uma prova
         JSONObject p;
 
@@ -102,8 +102,8 @@ public class ProvaService {
         return prova;
     }
 
-    public static ArrayList<String> getTipoProva()throws  Exception{
-        String json = getJSONFromAPI(url, "listar", null);
+    public static ArrayList<String> getTipoProva(String token)throws  Exception{
+        String json = getJSONFromAPI(url, "listar", token, null);
         JSONObject jsonObject = new JSONObject(json);
         if(jsonObject.has("ERRO")){
             throw new Exception(jsonObject.getString("ERRO"));
@@ -222,7 +222,7 @@ public class ProvaService {
 
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
-    private static String getJSONFromAPI(String url, String tipoReq, String extParam) throws Exception{
+    private static String getJSONFromAPI(String url, String tipoReq, String token, String extParam) throws Exception{
         String retorno = "";
         try {
             //objetos
@@ -235,6 +235,7 @@ public class ProvaService {
             conexao = (HttpURLConnection) apiEnd.openConnection();
             conexao.setRequestMethod("POST");
             conexao.addRequestProperty("tipo",tipoReq);
+            conexao.addRequestProperty("token", token);
             if(extParam != null)
                 conexao.addRequestProperty("idProva", extParam);
             conexao.setReadTimeout(readTimeOut);
@@ -253,6 +254,8 @@ public class ProvaService {
             Log.i("Infome","INFORME ================ "+retorno);
             if(retorno.equals(""))
                 throw new Exception("Erro na resposta do servidor");
+            if(isNewToken(token))
+
             is.close();
             conexao.disconnect();
 
@@ -263,6 +266,10 @@ public class ProvaService {
         }
 
         return retorno;
+    }
+
+    public static boolean isNewToken(String token){
+        DBService db = new DBService()
     }
 
     //converte um input stream em string para processamento no app

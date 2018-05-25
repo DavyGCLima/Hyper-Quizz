@@ -7,16 +7,17 @@ import android.util.Log;
 
 import com.example.davy.projetoic.HomeActivity;
 import com.example.davy.projetoic.R;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.sql.Connection;
 
 public class UserService {
     /**
@@ -35,42 +36,26 @@ public class UserService {
      * @return retorna verdadeiro caso o acesso seja autorizado, falso se as credencias não possuem cadastro váido
      * @throws Exception retorna um conjunto de escessoões caso ocorra algum erro no processo de conexão
      */
-    public static boolean valdiarAcesso(String email, String senha) throws Exception {
+    public static String valdiarAcesso(String email, String senha) throws Exception {
         String retorno;
 
-        //objetos
-        URL apiEnd = new URL(url);
-        int codigoResposta;
-        HttpURLConnection conexao;
-        InputStream is;
+        HttpURLConnection connection;
 
         //coneção web
-        conexao = (HttpURLConnection) apiEnd.openConnection();
-        conexao.setRequestMethod("POST");
-        conexao.addRequestProperty("tipo","login");
-        conexao.addRequestProperty("email", email);
-        conexao.addRequestProperty("senha",senha);
-        conexao.setReadTimeout(readTimeOut);
-        conexao.setConnectTimeout(conectTimeOut);
-        conexao.connect();
+        connection = prepareConection();
+        connection.setRequestMethod("POST");
+        connection.addRequestProperty("tipo","login");
+        connection.addRequestProperty("email", email);
+        connection.addRequestProperty("senha",senha);
 
-        //valida a resposta
-        codigoResposta = conexao.getResponseCode();
-        if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-            is = conexao.getInputStream();
-        }else{
-            is = conexao.getErrorStream();
-        }
-
-        retorno = converterInputStreamToString(is);
-        Log.i("Infome","INFORME ================ "+retorno);
-        is.close();
-        conexao.disconnect();
-        if(retorno.equals("true"))
-            return true;
+        retorno = connect(connection);
         if(retorno.equals(""))
             throw new Exception("Erro na resposta do servidor");
-        return false;
+
+        JSONObject json = new JSONObject(retorno);
+        String token = json.getString("token");
+        return token;
+
     }
 
     /**
@@ -130,7 +115,7 @@ public class UserService {
         return conexao;
     }
 
-    private static String conecct(HttpURLConnection connection) throws IOException {
+    private static String connect(HttpURLConnection connection) throws IOException {
         String retorno;
         InputStream is;
         int codigoResposta;
@@ -167,7 +152,7 @@ public class UserService {
         con.addRequestProperty("erros", String.valueOf(erros));
         con.addRequestProperty("email", email);
         System.out.println("PRE CONNECT");
-        String retorno = conecct(con);
+        String retorno = connect(con);
         System.out.println("RETORNO "+retorno);
         switch (retorno) {
             case "ok":
