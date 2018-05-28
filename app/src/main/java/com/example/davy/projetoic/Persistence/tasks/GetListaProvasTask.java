@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.davy.projetoic.ListaProvas;
+import com.example.davy.projetoic.Persistence.DBService;
 import com.example.davy.projetoic.Persistence.ProvaService;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
@@ -18,10 +19,13 @@ public class GetListaProvasTask extends AsyncTask<String, Void, ArrayList> {
 
     private Context context;
     private ProgressBar progressBar;
+    private final String[] user;
 
     public GetListaProvasTask(Context context, ProgressBar progressBar) {
         this.context = context;
         this.progressBar = progressBar;
+        DBService db = new DBService(context);
+        user = db.getUser();
     }
 
     @Override
@@ -37,7 +41,8 @@ public class GetListaProvasTask extends AsyncTask<String, Void, ArrayList> {
     protected ArrayList doInBackground(String... strings) {
         try {
             ArrayList list;
-            list = ProvaService.getListaProvas(strings[0]);
+            String token = user[2];
+            list = ProvaService.getListaProvas(strings[0], token);
             return list;
         }catch (Exception ex){
             ex.printStackTrace();

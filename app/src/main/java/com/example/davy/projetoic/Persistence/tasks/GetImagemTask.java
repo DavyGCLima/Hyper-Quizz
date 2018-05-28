@@ -9,18 +9,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.davy.projetoic.Persistence.DBService;
 import com.example.davy.projetoic.Persistence.ProvaService;
 import com.example.davy.projetoic.QuestoesActivity;
 import com.example.davy.projetoic.utils.AndroidUtils;
 
 public class GetImagemTask extends AsyncTask <String, Void, String>{
 
-    Context context;
-    ImageView imageView;
+    private Context context;
+    private ImageView imageView;
+    private final String[] user;
 
     public GetImagemTask(Context context, ImageView imageView) {
         this.context = context;
         this.imageView = imageView;
+        DBService db = new DBService(context);
+        user = db.getUser();
     }
 
     @Override
@@ -28,7 +32,8 @@ public class GetImagemTask extends AsyncTask <String, Void, String>{
         if(!AndroidUtils.isNeworkAvailble(context))
             return null;
         try {
-            String imagemQuest = ProvaService.getImagem(strings[0]);
+            String token = user[2];
+            String imagemQuest = ProvaService.getImagem(strings[0], token);
             return imagemQuest;
         } catch (Exception e) {
             return null;

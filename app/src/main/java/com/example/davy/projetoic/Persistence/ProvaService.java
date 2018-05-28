@@ -32,14 +32,9 @@ public class ProvaService {
     private static final int conectTimeOut = 15000;
 
     public  static Prova getProva(String tipoProva, String token, Context context) throws Exception {
-        //String prova = readFile(param, context);
-        //faz a requisição
-        String prova = getJSONFromAPI(url, "buscarProva", token,tipoProva);
-        //constroi uma prova
+        String prova = getJSONFromAPI(url, "buscarProva", token, tipoProva);
         JSONObject p;
-
         p = new JSONObject(prova);
-
         if(!p.isNull("ERRO"))
             Toast.makeText(context, p.getString("ERRO"), Toast.LENGTH_SHORT);
         else {
@@ -65,8 +60,8 @@ public class ProvaService {
         return null;
     }
 
-    public static String getImagem(String imageId) throws Exception {
-        String json = getImagemQuest(imageId);
+    public static String getImagem(String imageId, String token) throws Exception {
+        String json = getImagemQuest(imageId, token);
         JSONObject img = new JSONObject(json);
         if(img.has("ERRO"))
             return null;
@@ -102,23 +97,30 @@ public class ProvaService {
         return prova;
     }
 
-    public static ArrayList<String> getTipoProva(String token)throws  Exception{
+    public static ArrayList<String> getTipoProva(String token, Context context)throws  Exception{
         String json = getJSONFromAPI(url, "listar", token, null);
-        JSONObject jsonObject = new JSONObject(json);
-        if(jsonObject.has("ERRO")){
-            throw new Exception(jsonObject.getString("ERRO"));
+        if(isNewToken(json, context)) {
+            DBService db = new DBService(context);
+            final String[] user = db.getUser();
+            String newToken = user[2];
+            return getTipoProva(newToken, context);
         }else {
-            JSONArray tipos = jsonObject.getJSONArray("tipo");
-            ArrayList<String> list = new ArrayList<>();
-            for (int i = 0; i < tipos.length(); i++) {
-                list.add(tipos.getString(i));
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.has("ERRO")) {
+                throw new Exception(jsonObject.getString("ERRO"));
+            } else {
+                JSONArray tipos = jsonObject.getJSONArray("tipo");
+                ArrayList<String> list = new ArrayList<>();
+                for (int i = 0; i < tipos.length(); i++) {
+                    list.add(tipos.getString(i));
+                }
+                return list;
             }
-            return list;
         }
     }
 
-    public static ArrayList getListaProvas(String tipoProva) throws Exception {
-        String retorno = getListaProvasJson(url, tipoProva);
+    public static ArrayList getListaProvas(String tipoProva, String token) throws Exception {
+        String retorno = getListaProvasJson(url, token, tipoProva);
         JSONObject jsonObject = new JSONObject(retorno);
         if(jsonObject.has("ERRO")){
             throw new Exception(jsonObject.getString("ERRO"));
@@ -138,38 +140,18 @@ public class ProvaService {
         }
     }
 
-    private static String getListaProvasJson(String url, String tipoProva) throws Exception {
+    private static String getListaProvasJson(String url, String token, String tipoProva) throws Exception {
         String retorno = "";
         try {
             //objetos
-            URL apiEnd = new URL(url);
-            int codigoResposta;
             HttpURLConnection conexao;
-            InputStream is;
 
             //coneção web
-            conexao = (HttpURLConnection) apiEnd.openConnection();
-            conexao.setRequestMethod("POST");
+            conexao = prepareConection();
             conexao.addRequestProperty("tipo","listarProvas");
             conexao.addRequestProperty("tipoProva",tipoProva);
-            conexao.setReadTimeout(readTimeOut);
-            conexao.setConnectTimeout(conectTimeOut);
-            conexao.connect();
-
-            //valida a resposta
-            codigoResposta = conexao.getResponseCode();
-            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-                is = conexao.getInputStream();
-            }else{
-                is = conexao.getErrorStream();
-            }
-
-            retorno = converterInputStreamToString(is);
-            Log.i("Infome","INFORME ================ "+retorno);
-            if(retorno.equals(""))
-                throw new Exception("Erro na resposta do servidor");
-            is.close();
-            conexao.disconnect();
+            conexao.addRequestProperty("token", token);
+            retorno = connect(conexao);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -180,38 +162,18 @@ public class ProvaService {
         return retorno;
     }
 
-    private static String getImagemQuest(String imageId) throws Exception{
+    private static String getImagemQuest(String imageId, String token) throws Exception{
         String retorno = "";
         try{
             //objetos
-            URL apiEnd = new URL(url);
-            int codigoResposta;
             HttpURLConnection conexao;
-            InputStream is;
 
             //coneção web
-            conexao = (HttpURLConnection) apiEnd.openConnection();
-            conexao.setRequestMethod("POST");
+            conexao = prepareConection();
             conexao.addRequestProperty("tipo","getImageQuest");
             conexao.addRequestProperty("imageId", imageId);
-            conexao.setReadTimeout(readTimeOut);
-            conexao.setConnectTimeout(conectTimeOut);
-            conexao.connect();
-
-            //valida a resposta
-            codigoResposta = conexao.getResponseCode();
-            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-                is = conexao.getInputStream();
-            }else{
-                is = conexao.getErrorStream();
-            }
-
-            retorno = converterInputStreamToString(is);
-            Log.i("Infome","INFORME ================ "+retorno);
-            if(retorno.equals(""))
-                throw new Exception("Erro na resposta do servidor");
-            is.close();
-            conexao.disconnect();
+            conexao.addRequestProperty("token", token);
+            retorno = connect(conexao);
 
         } catch (IOException e){
             e.printStackTrace();
@@ -226,38 +188,15 @@ public class ProvaService {
         String retorno = "";
         try {
             //objetos
-            URL apiEnd = new URL(url);
-            int codigoResposta;
             HttpURLConnection conexao;
-            InputStream is;
 
             //coneção web
-            conexao = (HttpURLConnection) apiEnd.openConnection();
-            conexao.setRequestMethod("POST");
+            conexao = prepareConection();
             conexao.addRequestProperty("tipo",tipoReq);
             conexao.addRequestProperty("token", token);
             if(extParam != null)
                 conexao.addRequestProperty("idProva", extParam);
-            conexao.setReadTimeout(readTimeOut);
-            conexao.setConnectTimeout(conectTimeOut);
-            conexao.connect();
-
-            //valida a resposta
-            codigoResposta = conexao.getResponseCode();
-            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-                is = conexao.getInputStream();
-            }else{
-                is = conexao.getErrorStream();
-            }
-
-            retorno = converterInputStreamToString(is);
-            Log.i("Infome","INFORME ================ "+retorno);
-            if(retorno.equals(""))
-                throw new Exception("Erro na resposta do servidor");
-            if(isNewToken(token))
-
-            is.close();
-            conexao.disconnect();
+            retorno = connect(conexao);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -268,9 +207,58 @@ public class ProvaService {
         return retorno;
     }
 
-    public static boolean isNewToken(String token){
-        DBService db = new DBService()
+    private static boolean isNewToken(String token, Context context) {
+        try {
+            JSONObject jsonToken = new JSONObject(token);
+            if(token.contains("newToken")) {
+                String newToken = jsonToken.getString("newToken");
+                DBService db = new DBService(context);
+                final String[] user = db.getUser();
+                String email = user[1];
+                db.update(email, newToken);
+                return true;
+            }else
+                return false;
+        } catch (JSONException e) {
+            return false;
+        }
     }
+
+    private static HttpURLConnection prepareConection() throws IOException {
+        //objetos
+        URL apiEnd = new URL(url);
+        HttpURLConnection conexao;
+        //coneção web
+        conexao = (HttpURLConnection) apiEnd.openConnection();
+        conexao.setRequestMethod("POST");
+        return conexao;
+    }
+
+    private static String connect(HttpURLConnection connection) throws IOException {
+        String retorno;
+        InputStream is;
+        int codigoResposta;
+
+        System.out.println("CONNECT");
+        connection.setReadTimeout(readTimeOut);
+        connection.setConnectTimeout(conectTimeOut);
+        connection.connect();
+
+        //valida a resposta
+        codigoResposta = connection.getResponseCode();
+        if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
+            is = connection.getInputStream();
+        }else{
+            is = connection.getErrorStream();
+        }
+
+        retorno = converterInputStreamToString(is);
+        Log.i("Infome","INFORME CADASTRO ================ "+retorno);
+        is.close();
+        connection.disconnect();
+        return retorno;
+    }
+
 
     //converte um input stream em string para processamento no app
     private static String converterInputStreamToString(InputStream is){

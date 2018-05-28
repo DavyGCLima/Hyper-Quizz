@@ -380,11 +380,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //realiza login
                 DBService db = new DBService(mContext);
                 String[] user = db.getUser();
-                if(user.length > 0 && !user[1].equals(mEmail) )
+                if(user.length > 0 && !user[2].equals(response))
                     db.update(mEmail, response);
-                else if(user[1].equals(mEmail) && !user[2].equals(response))
+                else if(user.length > 0 && user[1].equals(mEmail) )
                     db.update(mEmail, response);
-                else if(user.length != 1)
+                else if(user.length == 0)
                     db.insert(mEmail, response);
                 finish();
                 UserService.openMainActivity(LoginActivity.this);
