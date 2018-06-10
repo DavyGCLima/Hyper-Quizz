@@ -18,6 +18,7 @@ public class charts_Profile extends Fragment {
     private String mIdUsuario;
     private WebView mWbGrafico;
     private String mToken;
+    private ProgressBar mProgressBar;
 
     public charts_Profile() {
         // Required empty public constructor
@@ -54,8 +55,8 @@ public class charts_Profile extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_charts__profile, container, false);
         mWbGrafico = layout.findViewById(R.id.wbGrafico);
-        ProgressBar progressBar = layout.findViewById(R.id.progressBarProfileFragment);
-        new GetUserDataTask(progressBar, getActivity(), mWbGrafico).execute(mIdUsuario, mToken);
+        mProgressBar = layout.findViewById(R.id.progressBarProfileFragment);
+        new GetUserDataTask(mProgressBar, getActivity(), mWbGrafico).execute(mIdUsuario, mToken);
         return layout;
     }
 

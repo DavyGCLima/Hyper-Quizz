@@ -1,7 +1,6 @@
 package com.example.davy.projetoic.Persistence.tasks;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -15,23 +14,25 @@ import com.example.davy.projetoic.utils.AlertDialogFragment;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class GetUserDataTask extends AsyncTask<String, String[], String[]> {
+public class GetUserDataTask extends AsyncTask<String, String[], String> {
 
-    private final ProgressBar mProgress;
-    private Activity mContext;
+    private final AtomicReference<ProgressBar> mProgress = new AtomicReference<ProgressBar>();
+    private final AtomicReference<Activity> mContext = new AtomicReference<Activity>();
     private WebView mWb;
 
     public GetUserDataTask(ProgressBar progress, Activity context, WebView wb) {
-        mProgress = progress;
-        mContext = context;
+        mProgress.set(progress);
+        mContext.set(context);
         mWb = wb;
     }
 
     @Override
-    protected String[] doInBackground(String... strings) {
+    protected String doInBackground(String... strings) {
         try {
-            return UserService.getUserData(strings[0], strings[1]);
+            String[] userData = UserService.getUserData(strings[0], strings[1]);
+            return makeScriptActXErr(userData);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
             cancel(true);
@@ -47,22 +48,12 @@ public class GetUserDataTask extends AsyncTask<String, String[], String[]> {
     }
 
     @Override
-    protected void onPostExecute(String[] strings) {
-        super.onPostExecute(strings);
-
-        String url = "https://chart.googleapis.com/chart?" +
-                "cht=p3&" + //define o tipo do gráfico "linha"
-                "chtt=Acertos X Erros&"+ //define o titulo do grafico
-                "chs=360x380&" + //define o tamanho da imagem
-                "chd=t:"+strings[0]+","+strings[1]+"&" + //valor de cada coluna do gráfico
-                "chds=a&"+
-                "chdl=Acertos e Erros&" + //legenda do gráfico
-                "chl=Acertos|Erros";
-
+    protected void onPostExecute(String script) {
+        super.onPostExecute(script);
         WebSettings ws = mWb.getSettings();
         ws.setJavaScriptEnabled(true);
         ws.setSupportZoom(false);
-        mWb.loadUrl(url);
+        mWb.loadData(script, "text/html", "UTF-8");
         exibirProgress(false);
     }
 
@@ -70,10 +61,46 @@ public class GetUserDataTask extends AsyncTask<String, String[], String[]> {
     protected void onCancelled() {
         super.onCancelled();
         exibirProgress(false);
-        new AlertDialogFragment(mContext.getString(R.string.errorResponseFromServer)).show(mContext.getFragmentManager(), "msgErr");
+        new AlertDialogFragment(mContext.get().getString(R.string.errorResponseFromServer)).show(mContext.get().getFragmentManager(), "msgErr");
     }
 
     private void exibirProgress(boolean exibir) {
-        mProgress.setVisibility(exibir ? View.VISIBLE : View.GONE);
+        mProgress.get().setVisibility(exibir ? View.VISIBLE : View.GONE);
+    }
+
+    private String makeScriptActXErr(String[] params){
+        String script = "<html>" +
+                "  <head>" +
+                //   Load the AJAX API
+                "    <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>" +
+                "    <script type=\"text/javascript\">" +
+                "      google.charts.load('current', {'packages':['corechart']});" +
+                "      google.charts.setOnLoadCallback(drawChart);" +
+                "      function drawChart() {" +
+                "        var data = new google.visualization.DataTable();" +
+                "        data.addColumn('string', 'Topping');" +
+                "        data.addColumn('number', 'Slices');" +
+                "        data.addRows([" +
+                "          ['"+ mContext.get().getString(R.string.right)+"', "+params[0]+"]," +
+                "          ['"+ mContext.get().getString(R.string.wrong)+"', "+params[1]+"]" +
+                "        ]);" +
+                "        var options = {'title':'"+ mContext.get().getString(R.string.titleGraphRightWrong)+"'," +
+                "                       'width':450," +
+                "                       'height':350," +
+                "                       'titleFontSize':22," +
+                "                       'toltipFontSize':14,"+
+                "                       'legendFontSize':14"+
+                "                      };" +
+                "        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));" +
+                "        chart.draw(data, options);" +
+                "      }" +
+                "    </script>" +
+                "  </head>" +
+                "  <body>" +
+                //    Div that will hold the pie chart"
+                "    <div id=\"chart_div\"></div>" +
+                "  </body>" +
+                "</html>";
+        return script;
     }
 }

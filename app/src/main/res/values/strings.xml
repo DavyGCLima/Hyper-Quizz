@@ -56,8 +56,8 @@
     <string name="title_tipo_prova">Selecione uma modalidade de prova</string>
     <string name="iniciar_teste">Iniciar Teste</string>
     <string name="perfil">Perfil</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="right">Acertos</string>
+    <string name="wrong">Erros</string>
+    <string name="titleGraphRightWrong">Acertos X Erros</string>
 
 </resources>
