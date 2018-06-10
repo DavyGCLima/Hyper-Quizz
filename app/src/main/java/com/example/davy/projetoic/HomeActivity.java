@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarHome);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -91,7 +91,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.tools_Drawer) {
-
+            openProfileActivity();
         } else if (id == R.id.quests_drawer) {
             openQuestsActivity();
         } else if (id == R.id.nav_share) {
@@ -105,8 +105,12 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void openQuestsActivity(){
-            //new GetProvaTask(this, progressBar).execute("ENEM");
             new GetTipoProvaTask(this, progressBar).execute();
+    }
+
+    private void openProfileActivity(){
+        Intent it = new Intent(this, Profile.class);
+        this.startActivity(it);
     }
 
     public class GetTipoProvaTask extends AsyncTask<Void , Void, ArrayList> {

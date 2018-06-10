@@ -5,6 +5,7 @@
       <config>
         <devices>
           <device id="Nexus 5" />
+          <device id="Nexus 4" />
           <device id="Galaxy Nexus" />
         </devices>
       </config>
@@ -15,23 +16,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="890e29c2-25d7-4ea5-9164-b37fc713f8d2" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_26_1_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/profile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/teste.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/profile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/teste.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/profile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/teste.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/profile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/teste.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/AppCompatPreferenceActivity.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetListaProvasTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetListaProvasTask.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetTipoProvaTask.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/SettingsActivity.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AndroidUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AndroidUtils.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/pref_data_sync.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/pref_general.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/pref_headers.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/pref_notification.xml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,21 +93,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java">
+      <file leaf-file-name="Profile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="25" column="95" lean-forward="false" selection-start-line="25" selection-start-column="95" selection-end-line="25" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TiposProva.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/TiposProva.java">
+      <file leaf-file-name="charts_Profile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+            <state relative-caret-position="782">
+              <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -87,53 +116,46 @@
       <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="141" column="0" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="141" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="168" column="50" lean-forward="false" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
               <folding>
+                <element signature="docComment;field#url#0;class#UserService#0" expanded="false" />
+                <element signature="docComment;method#valdiarAcesso#0;class#UserService#0" expanded="false" />
                 <element signature="method#valdiarAcesso#0;class#UserService#0" expanded="false" />
                 <element signature="docComment;method#cadastrar#0;class#UserService#0" expanded="false" />
                 <element signature="method#cadastrar#0;class#UserService#0" expanded="false" />
                 <element signature="method#prepareConection#0;class#UserService#0" expanded="false" />
                 <element signature="method#connect#0;class#UserService#0" expanded="false" />
+                <element signature="method#openMainActivity#0;class#UserService#0" expanded="false" />
                 <element signature="method#saveDataAfterTest#0;class#UserService#0" expanded="false" />
+                <element signature="docComment;method#converterInputStreamToString#0;class#UserService#0" expanded="false" />
                 <element signature="method#converterInputStreamToString#0;class#UserService#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetListaProvasTask.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetListaProvasTask.java">
+      <file leaf-file-name="GetUserDataTask.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProvaService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="61" column="22" lean-forward="true" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
               <folding>
-                <element signature="docComment;class#ProvaService#0" expanded="false" />
-                <element signature="method#readFile#0;class#ProvaService#0" expanded="false" />
-                <element signature="method#isNewToken#0;class#ProvaService#0" expanded="false" />
-                <element signature="method#prepareConection#0;class#ProvaService#0" expanded="false" />
-                <element signature="method#connect#0;class#ProvaService#0" expanded="false" />
-                <element signature="method#converterInputStreamToString#0;class#ProvaService#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2181#2233#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetImagemTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java">
+      <file leaf-file-name="fragment_charts__profile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="35" />
+            <state relative-caret-position="340">
+              <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -3981,40 +4003,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AlertDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Cadastro.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Cadastro.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/LoginService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetTipoProvaTask.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Cadastro.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/ListaProvas.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_provas.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/TiposProva.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tipos_prova.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java" />
@@ -4032,6 +4020,40 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetListaProvasTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-v21/fragment_charts__profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/pref_general.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AndroidUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java" />
       </list>
     </option>
   </component>
@@ -4056,9 +4078,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+              <item name="example.davy.projetoic" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -4084,27 +4128,13 @@
               <item name="projetoic" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="Persistence" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
             <path>
-              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="ProjetoIC" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-              <item name="example.davy.projetoic" type="1f31426a:PackageElementNode" />
+              <item name="ProjetoIC" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="projetoic" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -4121,15 +4151,16 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence" />
     <property name="android.profiler.active" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1527475575412" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1528662668220" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1524660873042" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.1.1" />
-    <property name="SearchEverywhereHistoryKey" value="look and &#9;ACTION&#9;ChangeLaf&#10;look&#9;ACTION&#9;ChangeLaf" />
+    <property name="SearchEverywhereHistoryKey" value="asse&#9;ACTION&#9;NewAndroidImageAsset&#10;look and &#9;ACTION&#9;ChangeLaf&#10;look&#9;ACTION&#9;ChangeLaf" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projetos Android\ProjetoIC\app\src\main\java\com\example\davy\projetoic\Persistence" />
-      <recent name="E:\Projetos Android\ProjetoIC\app\src\main\java\com\example\davy\projetoic" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.davy.projetoic.Persistence" />
+      <recent name="com.example.davy.projetoic" />
+      <recent name="com.example.davy.projetoic.Adapters" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.example.davy.projetoic" />
@@ -4137,10 +4168,9 @@
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.davy.projetoic.Persistence" />
-      <recent name="com.example.davy.projetoic" />
-      <recent name="com.example.davy.projetoic.Adapters" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projetos Android\ProjetoIC\app\src\main\java\com\example\davy\projetoic\Persistence" />
+      <recent name="E:\Projetos Android\ProjetoIC\app\src\main\java\com\example\davy\projetoic" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -4423,16 +4453,15 @@
     </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <module name="ProjetoIC" />
       <envs />
-      <method />
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -4477,18 +4506,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32307693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32197616" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15355521" sideWeight="0.51282054" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53162396" sideWeight="0.5045386" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5315162" sideWeight="0.5045386" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43441227" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43441227" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43760684" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43611583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -4498,8 +4528,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18257576" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42930153" sideWeight="0.49546143" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -4508,9 +4538,9 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29692832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2624811" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26510575" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3253833" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4558,253 +4588,29 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="142" />
+      <option name="time" value="145" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/SDKs/sources/android-26/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="24880" column="21" lean-forward="false" selection-start-line="24880" selection-start-column="21" selection-end-line="24880" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/SDKs/sources/android-26/android/provider/ContactsContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5541">
-          <caret line="6328" column="39" lean-forward="false" selection-start-line="6328" selection-start-column="39" selection-end-line="6328" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cadastro.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21305">
-          <caret line="301" column="12" lean-forward="false" selection-start-line="301" selection-start-column="12" selection-end-line="301" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3118">
-          <caret line="40" column="65" lean-forward="true" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Interfaces/RecyclerViewClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/SDKs/sources/android-26/android/widget/RelativeLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="83" column="13" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/OptionsQuestAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="54" column="54" lean-forward="true" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Interfaces/ContainerViewPager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/SDKs/sources/android-27/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="865" column="0" lean-forward="false" selection-start-line="865" selection-start-column="0" selection-end-line="865" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/ListaProvaAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="36" column="73" lean-forward="false" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_finaliza_prova.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_option.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_questoes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_line_lista_provas.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_quest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="56" lean-forward="false" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="android-dummy://D:/Projetos Android/projetoic//Theme Editor">
-      <provider selected="true" editor-type-id="themeEditor">
-        <state theme-name="AppTheme" module-name="app" proportion="0.67" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_finaliza_prova.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/gabarito_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Adapters/GabaritoAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AlertDialogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/idea.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/studio64.exe.vmoptions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Cadastro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="105" column="17" lean-forward="false" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="122" column="44" lean-forward="true" selection-start-line="122" selection-start-column="44" selection-end-line="122" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_provas.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="11" column="44" lean-forward="true" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_questoes.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="15" selection-end-column="54" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tipos_prova.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="49" column="15" lean-forward="false" selection-start-line="49" selection-start-column="15" selection-end-line="49" selection-end-column="15" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/ListaProvas.java">
@@ -4814,16 +4620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/home.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://D:/SDKs/sources/android-27/android/app/ActivityThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -4831,40 +4627,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_home.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_home.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="176" column="26" lean-forward="false" selection-start-line="176" selection-start-column="26" selection-end-line="176" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -4883,55 +4652,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetTipoProvaTask.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetProvaTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="84" column="34" lean-forward="true" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
-          <folding>
-            <element signature="e#815#828#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#GetProvaTask#0" expanded="false" />
-            <element signature="method#onProgressUpdate#0;class#GetProvaTask#0" expanded="false" />
-            <element signature="method#onCancelled#0;class#GetProvaTask#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="156" column="53" lean-forward="true" selection-start-line="156" selection-start-column="53" selection-end-line="156" selection-end-column="53" />
-          <folding>
-            <element signature="method#onCreate#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#HomeActivity#0" expanded="false" />
-            <element signature="e#2688#2746#0" expanded="false" />
-            <element signature="e#3107#3150#0" expanded="false" />
-            <element signature="method#onNavigationItemSelected#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#openQuestsActivity#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#GetTipoProvaTask#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onProgressUpdate#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#exibirProgress#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/TiposProva.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -4939,54 +4659,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/TiposProva.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_menu_manage.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_questoes.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="141" selection-end-column="0" />
-          <folding>
-            <element signature="method#valdiarAcesso#0;class#UserService#0" expanded="false" />
-            <element signature="docComment;method#cadastrar#0;class#UserService#0" expanded="false" />
-            <element signature="method#cadastrar#0;class#UserService#0" expanded="false" />
-            <element signature="method#prepareConection#0;class#UserService#0" expanded="false" />
-            <element signature="method#connect#0;class#UserService#0" expanded="false" />
-            <element signature="method#saveDataAfterTest#0;class#UserService#0" expanded="false" />
-            <element signature="method#converterInputStreamToString#0;class#UserService#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile_Act.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile_.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/FinalizaProva.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#ProvaService#0" expanded="false" />
-            <element signature="method#readFile#0;class#ProvaService#0" expanded="false" />
-            <element signature="method#isNewToken#0;class#ProvaService#0" expanded="false" />
-            <element signature="method#prepareConection#0;class#ProvaService#0" expanded="false" />
-            <element signature="method#connect#0;class#ProvaService#0" expanded="false" />
-            <element signature="method#converterInputStreamToString#0;class#ProvaService#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="38" column="65" lean-forward="false" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AndroidUtils.java">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -4994,11 +4700,297 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/BDcache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v21/fragment_charts__profile.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetImagemTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetListaProvasTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="30">
           <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/QuestoesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="194" column="37" lean-forward="false" selection-start-line="194" selection-start-column="37" selection-end-line="194" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/DBService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_home.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/home.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="93" column="34" lean-forward="false" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#HomeActivity#0" expanded="false" />
+            <element signature="e#2692#2750#0" expanded="false" />
+            <element signature="e#3111#3154#0" expanded="false" />
+            <element signature="e#3722#3723#0" expanded="false" />
+            <element signature="e#3791#3792#0" expanded="false" />
+            <element signature="class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#GetTipoProvaTask#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#onProgressUpdate#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+            <element signature="method#exibirProgress#0;class#GetTipoProvaTask#0;class#HomeActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/davy/projetoic/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="4024" column="28" lean-forward="false" selection-start-line="4024" selection-start-column="28" selection-end-line="4024" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_profile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/SDKs/sources/android-27/android/os/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="248" column="0" lean-forward="false" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AlertDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/pref_data_sync.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/pref_general.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/SettingsActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/utils/AndroidUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="45" lean-forward="false" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetProvaTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="83" column="43" lean-forward="false" selection-start-line="83" selection-start-column="43" selection-end-line="83" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/Prova.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-952">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/ProvaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="195" column="12" lean-forward="true" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="95" lean-forward="false" selection-start-line="25" selection-start-column="95" selection-end-line="25" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/charts_Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_charts__profile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="168" column="50" lean-forward="false" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
+          <folding>
+            <element signature="docComment;field#url#0;class#UserService#0" expanded="false" />
+            <element signature="docComment;method#valdiarAcesso#0;class#UserService#0" expanded="false" />
+            <element signature="method#valdiarAcesso#0;class#UserService#0" expanded="false" />
+            <element signature="docComment;method#cadastrar#0;class#UserService#0" expanded="false" />
+            <element signature="method#cadastrar#0;class#UserService#0" expanded="false" />
+            <element signature="method#prepareConection#0;class#UserService#0" expanded="false" />
+            <element signature="method#connect#0;class#UserService#0" expanded="false" />
+            <element signature="method#openMainActivity#0;class#UserService#0" expanded="false" />
+            <element signature="method#saveDataAfterTest#0;class#UserService#0" expanded="false" />
+            <element signature="docComment;method#converterInputStreamToString#0;class#UserService#0" expanded="false" />
+            <element signature="method#converterInputStreamToString#0;class#UserService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/davy/projetoic/Persistence/tasks/GetUserDataTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="61" column="22" lean-forward="true" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2181#2233#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

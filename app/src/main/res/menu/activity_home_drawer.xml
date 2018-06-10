@@ -6,12 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/quests_drawer"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Questões" />
+            android:icon="@drawable/teste"
+            android:title="@string/iniciar_teste" />
         <item
             android:id="@+id/tools_Drawer"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Ferramentas" />
+            android:icon="@drawable/profile"
+            android:title="@string/perfil" />
     </group>
 
     <item android:title="Comunicação">
@@ -22,5 +22,4 @@
                 android:title="Compartilhar" />
         </menu>
     </item>
-
 </menu>

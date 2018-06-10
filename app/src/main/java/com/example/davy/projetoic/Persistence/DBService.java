@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBService {
     private SQLiteDatabase db;
+    public static final int ID = 0;
+    public static final int EMAIL = 1;
+    public static final int TOKEN = 2;
 
     public DBService(Context contxt) {
         BDcache cache = new BDcache(contxt);

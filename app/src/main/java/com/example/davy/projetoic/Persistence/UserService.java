@@ -10,6 +10,7 @@ import com.example.davy.projetoic.R;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -43,7 +44,6 @@ public class UserService {
 
         //coneção web
         connection = prepareConection();
-        connection.setRequestMethod("POST");
         connection.addRequestProperty("tipo","login");
         connection.addRequestProperty("email", email);
         connection.addRequestProperty("senha",senha);
@@ -134,7 +134,7 @@ public class UserService {
         }
 
         retorno = converterInputStreamToString(is);
-        Log.i("Infome","INFORME CADASTRO ================ "+retorno);
+        Log.i("Infome","INFORME ================ "+retorno);
         is.close();
         connection.disconnect();
         return retorno;
@@ -151,9 +151,7 @@ public class UserService {
         con.addRequestProperty("acertos", String.valueOf(acertos));
         con.addRequestProperty("erros", String.valueOf(erros));
         con.addRequestProperty("email", email);
-        System.out.println("PRE CONNECT");
         String retorno = connect(con);
-        System.out.println("RETORNO "+retorno);
         switch (retorno) {
             case "ok":
                 return context.getString(R.string.updateData);
@@ -162,6 +160,23 @@ public class UserService {
             default:
                 return retorno;
         }
+    }
+
+    public static String[] getUserData(String userId, String token) throws IOException, JSONException {
+        HttpURLConnection con = prepareConection();
+        con.addRequestProperty("tipo", "getDadosUsuario");
+        con.addRequestProperty("token", token);
+        con.addRequestProperty("idUsuario", userId);
+        String retorno = connect(con);
+        String[] dados = new String[2];
+        if(retorno != null && !retorno.equals("")){
+            JSONObject json = new JSONObject(retorno);
+            dados[0] = json.getString("acertos");
+            dados[1] = json.getString("erros");
+            return dados;
+
+        }else
+            throw new IOException("Erro");
     }
 
     /**
