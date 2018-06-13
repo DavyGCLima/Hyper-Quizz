@@ -18,12 +18,12 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class GetUserDataTask extends AsyncTask<String, String[], String> {
 
-    private final AtomicReference<ProgressBar> mProgress = new AtomicReference<ProgressBar>();
+    private final ProgressBar mProgress;
     private final AtomicReference<Activity> mContext = new AtomicReference<Activity>();
     private WebView mWb;
 
     public GetUserDataTask(ProgressBar progress, Activity context, WebView wb) {
-        mProgress.set(progress);
+        mProgress = progress;
         mContext.set(context);
         mWb = wb;
     }
@@ -35,7 +35,6 @@ public class GetUserDataTask extends AsyncTask<String, String[], String> {
             return makeScriptActXErr(userData);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
-            cancel(true);
             onCancelled();
         }
         return null;
@@ -65,7 +64,7 @@ public class GetUserDataTask extends AsyncTask<String, String[], String> {
     }
 
     private void exibirProgress(boolean exibir) {
-        mProgress.get().setVisibility(exibir ? View.VISIBLE : View.GONE);
+        mProgress.setVisibility(exibir ? View.VISIBLE : View.GONE);
     }
 
     private String makeScriptActXErr(String[] params){

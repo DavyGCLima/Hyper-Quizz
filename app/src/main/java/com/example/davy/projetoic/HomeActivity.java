@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity
 
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_home);
         TextView emailUser = headerView.findViewById(R.id.email_perfil_nav);
-        emailUser.setText(user[1]);
+        emailUser.setText(user[DBService.EMAIL]);
     }
 
     @Override

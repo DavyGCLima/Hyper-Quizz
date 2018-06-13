@@ -59,5 +59,7 @@
     <string name="right">Acertos</string>
     <string name="wrong">Erros</string>
     <string name="titleGraphRightWrong">Acertos X Erros</string>
+    <string name="finishTest">Finalizar Prova</string>
+    <string name="blancQuestion">Ainda existem questçoes em branco, para finalizar a prova, por favor, responda todas</string>
 
 </resources>

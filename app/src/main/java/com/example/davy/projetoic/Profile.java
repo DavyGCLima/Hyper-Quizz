@@ -23,7 +23,7 @@ public class Profile extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        Fragment fragment = charts_Profile.newInstance(user[DBService.ID], user[DBService.TOKEN]);
+        Fragment fragment = charts_Profile.newInstance(user[DBService.EMAIL], user[DBService.TOKEN]);
 
         ft.add(R.id.fragment_container, fragment);
         ft.commit();

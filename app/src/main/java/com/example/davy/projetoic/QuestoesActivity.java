@@ -38,16 +38,15 @@ import java.util.Objects;
 
 public class QuestoesActivity extends AppCompatActivity implements ContainerViewPager {
 
-    static Integer acertos = 0;
-    static int totalPages;
-    static String[] mAnswers;
+    private static Integer acertos = 0;
+    private static boolean[] verificador;
+    private static String[] mAnswers;
     private ViewPager mViewPager;
     protected Prova prova;
     AsyncTask<Void, Void, String> task;
 
     @Override
     public void nextPage(){
-        Log.i("Informe", "NEXTPAGE "+mViewPager.getCurrentItem()+" : "+prova.getNumQuest());
         if(mViewPager.getCurrentItem()+1 == prova.getNumQuest())
             gabaritar();
         else
@@ -55,65 +54,62 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
     }
 
     private void gabaritar() {
-        Log.d("Informe", "GABARITAR");
-        acertos = 0;
-        ArrayList options = new ArrayList();
-        for(int i = 0; i < prova.getNumQuest(); i++){
-            if(mAnswers[i].equals(prova.getQuestao(i).getAnswer().toLowerCase()))
-                acertos++;
-            options.add(prova.getQuestao(i).getAnswer());
+        boolean cont = true;
+        for (int i = 0; i < verificador.length; i++) {
+            if(verificador[i] == false) {
+                cont = false;
+                mViewPager.setCurrentItem(i);
+                new AlertDialogFragment(getString(R.string.blancQuestion), this);
+            }
         }
-        task = new atualizaEstatisticaUsuarioTask(acertos, (prova.getNumQuest() - acertos), this).execute();
-        Intent it = new Intent(this, FinalizaProva.class);
-        it.putExtra("acertos", acertos.toString());
-        int erros = (prova.getNumQuest() - acertos);
-        it.putExtra("erros", String.valueOf(erros));
-        it.putStringArrayListExtra("options", options);
-        it.putExtra("answers", mAnswers);
-        it.putExtra("title", prova.getName());
-        startActivity(it);
+       if(cont) {
+           acertos = 0;
+           ArrayList options = new ArrayList();
+           for (int i = 0; i < prova.getNumQuest(); i++) {
+               if (mAnswers[i].equals(prova.getQuestao(i).getAnswer().toLowerCase()))
+                   acertos++;
+               options.add(prova.getQuestao(i).getAnswer());
+           }
+           task = new atualizaEstatisticaUsuarioTask(acertos, (prova.getNumQuest() - acertos), this).execute();
+           Intent it = new Intent(this, FinalizaProva.class);
+           it.putExtra("acertos", acertos.toString());
+           int erros = (prova.getNumQuest() - acertos);
+           it.putExtra("erros", String.valueOf(erros));
+           it.putStringArrayListExtra("options", options);
+           it.putExtra("answers", mAnswers);
+           it.putExtra("title", prova.getName());
+           startActivity(it);
+       }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questoes);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarQuestoes);
         setSupportActionBar(toolbar);
         try {
-        Bundle extras = getIntent().getExtras();
+            Bundle extras = getIntent().getExtras();
             assert extras != null;
             prova = (Prova)extras.getSerializable("Prova");
-            totalPages =  prova.getNumQuest();
-        /*
-      The {@link android.support.v4.view.PagerAdapter} that will provide
-      fragments for each of the sections. We use a
-      {@link FragmentPagerAdapter} derivative, which will keep every
-      loaded fragment in memory. If this becomes too memory intensive, it
-      may be best to switch to a
-      {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-            SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
-        if(savedInstanceState == null) {
-            acertos = 0;
-            mAnswers = null;
-            mAnswers = new String[prova.getNumQuest()];
-        }else {
-            acertos = savedInstanceState.getInt("acertos");
-            mAnswers = savedInstanceState.getStringArray("mAnswers");
-        }
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setOffscreenPageLimit(2);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+            int totalPages = prova.getNumQuest();
+            verificador = new boolean[prova.getNumQuest()];
+            for (boolean b : verificador)
+                b = false;
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), prova);
+            if(savedInstanceState == null) {
+                acertos = 0;
+                mAnswers = null;
+                mAnswers = new String[prova.getNumQuest()];
+            }else {
+                acertos = savedInstanceState.getInt("acertos");
+                mAnswers = savedInstanceState.getStringArray("mAnswers");
             }
-        });
+            mViewPager = (ViewPager) findViewById(R.id.containerQuestoes);
+            mViewPager.setOffscreenPageLimit(2);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+
         }catch (Exception e){
             e.printStackTrace();
             Log.e("Erro No APP: ", e.getMessage());
@@ -156,7 +152,8 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_finalizar_prova) {
+            gabaritar();
             return true;
         }
 
@@ -216,7 +213,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
             View rootView = inflater.inflate(R.layout.fragment_questoes, container, false);
             TextView numberQuest = rootView.findViewById(R.id.txtquest);
             //carregar aqui o corpo da questão
-            numberQuest.setText(getString(R.string.txtQuestao, getArguments().getInt(ARG_SECTION_NUMBER)));
+            numberQuest.setText(getString(R.string.txtQuestao, getArguments().getInt(ARG_SECTION_NUMBER)+1));
             TextView quest = rootView.findViewById(R.id.textQuestao);
             quest.setMovementMethod(new ScrollingMovementMethod());
             quest.setText(getArguments().getString("BODY"));
@@ -247,10 +244,9 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
                     String resposta = Objects.requireNonNull(getArguments().getString("ANSWER")).toLowerCase();
                     String selecao = s.substring(0, 1).toLowerCase();
                     mAnswers[getArguments().getInt(ARG_SECTION_NUMBER)] = selecao;
-                    //remover este condicional
+                    verificador[getArguments().getInt(ARG_SECTION_NUMBER)] = true;
                     if (selecao.equals(resposta)) {
                         acertos++;
-                        Toast.makeText(getActivity(), acertos.toString(), Toast.LENGTH_SHORT).show();
                     } else
                         acertos--;
                     mContainer.nextPage();
@@ -267,7 +263,6 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        //ArrayList<ArrayList> prova;
         Prova mProva;
 
         public SectionsPagerAdapter(FragmentManager fm, Prova prova) {
@@ -306,7 +301,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
             try {
                 DBService db = new DBService(mContext);
                 final String[] user = db.getUser();
-                String email = user[1];
+                String email = user[DBService.EMAIL];
                 String retorno = UserService.saveDataAfterTest(acertos, erros, email, mContext);
                 return retorno;
             } catch (IOException e) {

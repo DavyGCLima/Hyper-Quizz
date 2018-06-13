@@ -17,7 +17,6 @@ public class DBService {
     }
 
     public void insert(String email, String password){
-        System.out.println(" >>>>>>>>> INSERT ");
         ContentValues values = new ContentValues();
         values.put("email", email);
         values.put("token", password);
@@ -26,7 +25,6 @@ public class DBService {
     }
 
     public int update(String email, String token){
-        System.out.println(" >>>>>>>>> UPDATE ");
         ContentValues values = new ContentValues();
         values.put("email", email);
         values.put("token", token);

@@ -37,7 +37,8 @@
         <activity
             android:name=".QuestoesActivity"
             android:label="@string/title_activity_questoes"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"/>
         <activity android:name=".TiposProva" />
         <activity android:name=".ListaProvas" />
         <activity android:name=".Cadastro" />

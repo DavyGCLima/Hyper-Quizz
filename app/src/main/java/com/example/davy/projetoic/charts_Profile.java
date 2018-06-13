@@ -12,10 +12,10 @@ import com.example.davy.projetoic.Persistence.tasks.GetUserDataTask;
 
 
 public class charts_Profile extends Fragment {
-    private static final String USERID = "userID";
+    private static final String USEREMAIL = "userID";
     private static final String TOKEN = "token";
 
-    private String mIdUsuario;
+    private String mUserEmail;
     private WebView mWbGrafico;
     private String mToken;
     private ProgressBar mProgressBar;
@@ -28,13 +28,13 @@ public class charts_Profile extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param userID The user ID for search data from service
+     * @param email The user ID for search data from service
      * @return A new instance of fragment charts_Profile.
      */
-    public static charts_Profile newInstance(String userID, String token) {
+    public static charts_Profile newInstance(String email, String token) {
         charts_Profile fragment = new charts_Profile();
         Bundle args = new Bundle();
-        args.putString(USERID, userID);
+        args.putString(USEREMAIL, email);
         args.putString(TOKEN, token);
         fragment.setArguments(args);
         return fragment;
@@ -44,7 +44,7 @@ public class charts_Profile extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mIdUsuario = getArguments().getString(USERID);
+            mUserEmail = getArguments().getString(USEREMAIL);
             mToken = getArguments().getString(TOKEN);
         }
     }
@@ -56,7 +56,7 @@ public class charts_Profile extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_charts__profile, container, false);
         mWbGrafico = layout.findViewById(R.id.wbGrafico);
         mProgressBar = layout.findViewById(R.id.progressBarProfileFragment);
-        new GetUserDataTask(mProgressBar, getActivity(), mWbGrafico).execute(mIdUsuario, mToken);
+        new GetUserDataTask(mProgressBar, getActivity(), mWbGrafico).execute(mUserEmail, mToken);
         return layout;
     }
 

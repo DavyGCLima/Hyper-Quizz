@@ -162,11 +162,11 @@ public class UserService {
         }
     }
 
-    public static String[] getUserData(String userId, String token) throws IOException, JSONException {
+    public static String[] getUserData(String email, String token) throws IOException, JSONException {
         HttpURLConnection con = prepareConection();
         con.addRequestProperty("tipo", "getDadosUsuario");
         con.addRequestProperty("token", token);
-        con.addRequestProperty("idUsuario", userId);
+        con.addRequestProperty("email", email);
         String retorno = connect(con);
         String[] dados = new String[2];
         if(retorno != null && !retorno.equals("")){
