@@ -19,10 +19,6 @@ public class AlertDialogFragment extends DialogFragment {
      * Exibe uma menssagem para o usuario
      * @param mMessege menssagem a ser apresentada
      */
-    @SuppressLint("ValidFragment")
-    public AlertDialogFragment(String mMessege) {
-        this.mMessege = mMessege;
-    }
 
     @SuppressLint("ValidFragment")
     public AlertDialogFragment(String mMessege, Context context) {

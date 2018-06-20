@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="fill_vertical"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,24 +12,132 @@
     android:paddingTop="20dp"
     tools:context=".Cadastro">
 
-    <TextView
+    <ScrollView
+        android:id="@+id/form_cad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/informeCaastro"/>
+        android:layout_height="match_parent">
 
-    <AutoCompleteTextView
-        android:id="@+id/nomeCadastro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/nome"
-        android:inputType="textPersonName"
-        android:maxLines="1"
-        android:singleLine="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cadastrar"
-        android:id="@+id/btnCadastro"/>
+            <AutoCompleteTextView
+                android:id="@+id/nomeCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="@string/nome"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/txt_email_cadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:ems="10"
+                android:hint="@string/info_cad_email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:ems="10"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:ems="10"
+                android:hint="@string/prompt_comfirm_password"
+                android:inputType="textPassword" />
+
+            <LinearLayout
+                android:id="@+id/select_image_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_cad_Sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/genre"
+                    android:textAlignment="textStart"
+                    android:textSize="18sp"
+                    tools:text="@string/genre" />
+
+                <ImageButton
+                    android:id="@+id/btn_cad_male"
+                    style="@style/Widget.AppCompat.ImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/descrp_cad_male"
+                    app:srcCompat="@drawable/male" />
+
+                <ImageButton
+                    android:id="@+id/btn_cad_famale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/descrip_cad_famale"
+                    app:srcCompat="@drawable/famale" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/txt_cad_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_shadow_end_color"
+                android:ems="10"
+                android:hint="@string/born"
+                android:inputType="date"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spn_estados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"/>
+
+            <Spinner
+                android:id="@+id/spn_cidades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/cadastrar" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

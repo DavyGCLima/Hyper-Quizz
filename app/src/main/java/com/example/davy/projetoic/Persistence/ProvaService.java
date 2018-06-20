@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,7 +33,7 @@ public class ProvaService {
     private static final int conectTimeOut = 15000;
 
     public  static Prova getProva(String tipoProva, String token, Context context) throws Exception {
-        String prova = getJSONFromAPI(url, "buscarProva", token, tipoProva);
+        String prova = getJSONFromAPI("buscarProva", token, tipoProva);
         JSONObject p;
         p = new JSONObject(prova);
         if(!p.isNull("ERRO"))
@@ -69,7 +70,7 @@ public class ProvaService {
             return img.getString("img");
     }
 
-    private static String readFile(String jsonPath, Context context) throws FileNotFoundException {
+    /*private static String readFile(String jsonPath, Context context) throws FileNotFoundException {
         InputStream inputStream = context.getResources().openRawResource(R.raw.prova);
         String prova = "";
         try {
@@ -95,10 +96,10 @@ public class ProvaService {
         }
 
         return prova;
-    }
+    }*/
 
     public static ArrayList<String> getTipoProva(String token, Context context)throws  Exception{
-        String json = getJSONFromAPI(url, "listar", token, null);
+        String json = getJSONFromAPI("listar", token, null);
         if(isNewToken(json, context)) {
             DBService db = new DBService(context);
             final String[] user = db.getUser();
@@ -120,7 +121,7 @@ public class ProvaService {
     }
 
     public static ArrayList getListaProvas(String tipoProva, String token) throws Exception {
-        String retorno = getListaProvasJson(url, token, tipoProva);
+        String retorno = getListaProvasJson(token, tipoProva);
         JSONObject jsonObject = new JSONObject(retorno);
         if(jsonObject.has("ERRO")){
             throw new Exception(jsonObject.getString("ERRO"));
@@ -140,7 +141,7 @@ public class ProvaService {
         }
     }
 
-    private static String getListaProvasJson(String url, String token, String tipoProva) throws Exception {
+    private static String getListaProvasJson( String token, String tipoProva) throws Exception {
         String retorno = "";
         try {
             //objetos
@@ -149,8 +150,11 @@ public class ProvaService {
             //coneção web
             conexao = prepareConection();
             conexao.addRequestProperty("tipo","listarProvas");
-            conexao.addRequestProperty("tipoProva",tipoProva);
             conexao.addRequestProperty("token", token);
+            OutputStream out = conexao.getOutputStream();
+            JSONObject json = new JSONObject();
+            json.put("tipoProva",tipoProva);
+            out.write(json.toString().getBytes("UTF-8"));
             retorno = connect(conexao);
 
         } catch (MalformedURLException e) {
@@ -171,8 +175,11 @@ public class ProvaService {
             //coneção web
             conexao = prepareConection();
             conexao.addRequestProperty("tipo","getImageQuest");
-            conexao.addRequestProperty("imageId", imageId);
             conexao.addRequestProperty("token", token);
+            OutputStream out = conexao.getOutputStream();
+            JSONObject json = new JSONObject();
+            json.put("imageId", imageId);
+            out.write(json.toString().getBytes("UTF-8"));
             retorno = connect(conexao);
 
         } catch (IOException e){
@@ -184,7 +191,7 @@ public class ProvaService {
 
 
     //Realiza a requisição no servidor e espera o retorno do json em resposta
-    private static String getJSONFromAPI(String url, String tipoReq, String token, String extParam) throws Exception{
+    private static String getJSONFromAPI( String tipoReq, String token, String extParam) throws Exception{
         String retorno = "";
         try {
             //objetos
@@ -194,8 +201,12 @@ public class ProvaService {
             conexao = prepareConection();
             conexao.addRequestProperty("tipo",tipoReq);
             conexao.addRequestProperty("token", token);
-            if(extParam != null)
-                conexao.addRequestProperty("idProva", extParam);
+            OutputStream out = conexao.getOutputStream();
+            JSONObject json = new JSONObject();
+            if(extParam != null) {
+                json.put("idProva", extParam);
+                out.write(json.toString().getBytes("UTF-8"));
+            }
             retorno = connect(conexao);
 
         } catch (MalformedURLException e) {
@@ -227,11 +238,13 @@ public class ProvaService {
     private static HttpURLConnection prepareConection() throws IOException {
         //objetos
         URL apiEnd = new URL(url);
-        HttpURLConnection conexao;
+        HttpURLConnection con;
         //coneção web
-        conexao = (HttpURLConnection) apiEnd.openConnection();
-        conexao.setRequestMethod("POST");
-        return conexao;
+        con = (HttpURLConnection) apiEnd.openConnection();
+        con.setRequestMethod("POST");
+        con.setReadTimeout(readTimeOut);
+        con.setConnectTimeout(conectTimeOut);
+        return con;
     }
 
     private static String connect(HttpURLConnection connection) throws IOException {
@@ -239,9 +252,6 @@ public class ProvaService {
         InputStream is;
         int codigoResposta;
 
-        System.out.println("CONNECT");
-        connection.setReadTimeout(readTimeOut);
-        connection.setConnectTimeout(conectTimeOut);
         connection.connect();
 
         //valida a resposta

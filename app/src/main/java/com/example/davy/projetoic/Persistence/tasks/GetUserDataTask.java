@@ -60,7 +60,7 @@ public class GetUserDataTask extends AsyncTask<String, String[], String> {
     protected void onCancelled() {
         super.onCancelled();
         exibirProgress(false);
-        new AlertDialogFragment(mContext.get().getString(R.string.errorResponseFromServer)).show(mContext.get().getFragmentManager(), "msgErr");
+        new AlertDialogFragment(mContext.get().getString(R.string.errorResponseFromServer), mContext.get()).show(mContext.get().getFragmentManager(), "msgErr");
     }
 
     private void exibirProgress(boolean exibir) {

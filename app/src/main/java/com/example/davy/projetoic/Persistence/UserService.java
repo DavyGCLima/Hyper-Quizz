@@ -17,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -45,15 +46,18 @@ public class UserService {
         //coneção web
         connection = prepareConection();
         connection.addRequestProperty("tipo","login");
-        connection.addRequestProperty("email", email);
-        connection.addRequestProperty("senha",senha);
+        OutputStream out = connection.getOutputStream();
+        JSONObject json = new JSONObject();
+        json.put("email", email);
+        json.put("senha",senha);
+        out.write(json.toString().getBytes("UTF-8"));
 
         retorno = connect(connection);
         if(retorno.equals(""))
             throw new Exception("Erro na resposta do servidor");
 
-        JSONObject json = new JSONObject(retorno);
-        String token = json.getString("token");
+        JSONObject jsonR = new JSONObject(retorno);
+        String token = jsonR.getString("token");
         return token;
 
     }
@@ -66,42 +70,23 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public static String cadastrar(String nome, String email, String senha) throws Exception {
+    public static String cadastrar(String nome, String email, String senha, String estado, String cidade, char sexo, String date) throws Exception {
         String retorno;
 
-        //objetos
-        URL apiEnd = new URL(url);
-        int codigoResposta;
-        HttpURLConnection conexao;
-        InputStream is;
+        HttpURLConnection conexao = prepareConection();
+        conexao.setRequestProperty("tipo","cadastro");
+        OutputStream out = conexao.getOutputStream();
+        JSONObject json = new JSONObject();
+        json.put("senha",senha);
+        json.put("email",email);
+        json.put("nome",nome);
+        json.put("estado",estado);
+        json.put("cidade",cidade);
+        json.put("sexo",Character.toString(sexo));
+        json.put("data",date);
+        out.write(json.toString().getBytes("UTF-8"));
 
-        //coneção web
-        conexao = (HttpURLConnection) apiEnd.openConnection();
-        conexao.setRequestMethod("POST");
-        conexao.addRequestProperty("tipo","cadastro");
-        conexao.addRequestProperty("senha",senha);
-        conexao.addRequestProperty("email",email);
-        conexao.addRequestProperty("nome",nome);
-        conexao.setReadTimeout(readTimeOut);
-        conexao.setConnectTimeout(conectTimeOut);
-        conexao.connect();
-
-        //valida a resposta
-        codigoResposta = conexao.getResponseCode();
-        if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST){
-            is = conexao.getInputStream();
-        }else{
-            is = conexao.getErrorStream();
-        }
-
-        retorno = converterInputStreamToString(is);
-        Log.i("Infome","INFORME CADASTRO ================ "+retorno);
-        is.close();
-        conexao.disconnect();
-        if(retorno.equals("Cadastrado"))
-            return retorno;
-        else if(retorno.equals(""))
-            throw new Exception("Erro na resposta do servidor");
+        retorno = connect(conexao);
         return retorno;
     }
 
@@ -112,6 +97,8 @@ public class UserService {
         //coneção web
         conexao = (HttpURLConnection) apiEnd.openConnection();
         conexao.setRequestMethod("POST");
+        conexao.setReadTimeout(readTimeOut);
+        conexao.setConnectTimeout(conectTimeOut);
         return conexao;
     }
 
@@ -120,10 +107,7 @@ public class UserService {
         InputStream is;
         int codigoResposta;
 
-        System.out.println("CONNECT");
-        connection.setReadTimeout(readTimeOut);
-        connection.setConnectTimeout(conectTimeOut);
-        connection.connect();
+         connection.connect();
 
         //valida a resposta
         codigoResposta = connection.getResponseCode();
@@ -145,12 +129,16 @@ public class UserService {
         context.startActivity(it);
     }
 
-    public static String saveDataAfterTest(int acertos, int erros, String email, Context context) throws IOException {
+    public static String saveDataAfterTest(int acertos, int erros, String email, String token, Context context) throws IOException, JSONException {
         HttpURLConnection con = prepareConection();
         con.addRequestProperty("tipo", "atualizarEstatisticasUsuario");
-        con.addRequestProperty("acertos", String.valueOf(acertos));
-        con.addRequestProperty("erros", String.valueOf(erros));
-        con.addRequestProperty("email", email);
+        con.addRequestProperty("token", token);
+        OutputStream out = con.getOutputStream();
+        JSONObject json = new JSONObject();
+        json.put("acertos", String.valueOf(acertos));
+        json.put("erros", String.valueOf(erros));
+        json.put("email", email);
+        out.write(json.toString().getBytes("UTF-8"));
         String retorno = connect(con);
         switch (retorno) {
             case "ok":
@@ -164,15 +152,20 @@ public class UserService {
 
     public static String[] getUserData(String email, String token) throws IOException, JSONException {
         HttpURLConnection con = prepareConection();
+
         con.addRequestProperty("tipo", "getDadosUsuario");
         con.addRequestProperty("token", token);
-        con.addRequestProperty("email", email);
+        OutputStream out = con.getOutputStream();
+        JSONObject json = new JSONObject();
+        json.put("email", email);
+        out.write(json.toString().getBytes("UTF-8"));
+
         String retorno = connect(con);
         String[] dados = new String[2];
         if(retorno != null && !retorno.equals("")){
-            JSONObject json = new JSONObject(retorno);
-            dados[0] = json.getString("acertos");
-            dados[1] = json.getString("erros");
+            JSONObject jsonR = new JSONObject(retorno);
+            dados[0] = jsonR.getString("acertos");
+            dados[1] = jsonR.getString("erros");
             return dados;
 
         }else

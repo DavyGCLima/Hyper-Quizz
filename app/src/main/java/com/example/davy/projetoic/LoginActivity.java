@@ -49,15 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "davy@example.com:davyy", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
+
     private UserLoginTask mAuthTask = null;
 
     // UI references.
@@ -74,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView = (EditText) findViewById(R.id.password_login);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -97,8 +89,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        Button btnLogar = (Button)findViewById(R.id.btnNovoCadastro);
-        btnLogar.setOnClickListener(new OnClickListener() {
+        Button btnCad = (Button)findViewById(R.id.btnNovoCadastro);
+        btnCad.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSingIn();
@@ -150,46 +142,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void openSingIn(){
-        if (mAuthTask != null) {
-            return;
-        }
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            focusView.requestFocus();
-        } else {
-            Intent it = new Intent(this, Cadastro.class);
-            it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            Bundle bundle = new Bundle();
-            bundle.putString("email", mEmailView.getText().toString());
-            bundle.putString("senha", mPasswordView.getText().toString());
-            it.putExtras(bundle);
-            this.startActivity(it);
-        }
-
+        Intent it = new Intent(this, Cadastro.class);
+        it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        this.startActivity(it);
     }
 
     /**

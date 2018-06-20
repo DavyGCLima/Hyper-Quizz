@@ -5,4 +5,5 @@
     <color name="colorAccent">#0010b9</color>
     <color name="approved">#0de009</color>
     <color name="error">#e00707</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -33,6 +33,7 @@
     <string name="erroInesperadoCarregaMainAct">Houve um erro inesperado ao tentar iniciar a aplicação</string>
     <string name="erroComectarServidor">Houve um erro ao tentar conectar com o servidor</string>
     <string name="errorResponseFromServer">Houve um erro na resposta do servidor</string>
+    <string name="errorpopulateCities">Houve um erro ao listar as cidades de seu estado</string>
 
     <string name="btnTipoProva">Escolher</string>
     <string name="NoConnectionStats">Não há conexão</string>
@@ -61,5 +62,14 @@
     <string name="titleGraphRightWrong">Acertos X Erros</string>
     <string name="finishTest">Finalizar Prova</string>
     <string name="blancQuestion">Ainda existem questçoes em branco, para finalizar a prova, por favor, responda todas</string>
+    <string name="info_cad_email" >Email</string>
+    <string name="prompt_comfirm_password" >Comfirme senha</string>
+    <string name="born">Data de Nascimento</string>
+    <string name="genre">Sexo</string>
+    <string name="descrp_cad_male">Sexo Masculino</string>
+    <string name="descrip_cad_famale">Sexo Feminino</string>
+    <string name="requiredField">Este campo deve estar preenchido</string>
 
+    <string name="passwordLess">O campo de senha deve ter no minimno 6(seis) caracteres</string>
+    <string name="fildsPasswordNoMatch">Os campos de senha não combinam</string>
 </resources>

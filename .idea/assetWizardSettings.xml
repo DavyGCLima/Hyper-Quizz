@@ -40,17 +40,6 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
-                                      <entry key="image">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="trimmed" value="true" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
                                       <entry key="text">
                                         <value>
                                           <PersistentState>
@@ -66,8 +55,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="imageAsset" value="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android Studio\https:\www.google.com\url?sa=i&amp;source=images&amp;cd=&amp;ved=2ahUKEwj9n4j_-KjbAhXMhZAKHdZSBF0QjRx6BAgBEAU&amp;url=https%3A%2F%2Ficons8.com%2Ficon%2F3225%2Fuser&amp;psig=AOvVaw21lzRkvK2SehpDObRTHg0J&amp;ust=1527615406326224" />
-                                      <entry key="outputName" value="teste" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\reida\Pictures\icones\human-male\drawable-hdpi\ic_human_male_black_48dp.png" />
+                                      <entry key="outputName" value="male" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -32,6 +32,8 @@ import com.example.davy.projetoic.Persistence.UserService;
 import com.example.davy.projetoic.Persistence.Prova;
 import com.example.davy.projetoic.utils.AlertDialogFragment;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -302,9 +304,10 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
                 DBService db = new DBService(mContext);
                 final String[] user = db.getUser();
                 String email = user[DBService.EMAIL];
-                String retorno = UserService.saveDataAfterTest(acertos, erros, email, mContext);
+                String token = user[DBService.TOKEN];
+                String retorno = UserService.saveDataAfterTest(acertos, erros, email, token, mContext);
                 return retorno;
-            } catch (IOException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
                 return mContext.getString(R.string.erroComectarServidor);
             }
@@ -314,7 +317,7 @@ public class QuestoesActivity extends AppCompatActivity implements ContainerView
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if(!s.equals("ok") && !mContext.isFinishing() && isCancelled()){
-                new AlertDialogFragment(s).show(QuestoesActivity.this.getFragmentManager(), "alert");
+                new AlertDialogFragment(s, QuestoesActivity.this).show(QuestoesActivity.this.getFragmentManager(), "alert");
             }
         }
     }
