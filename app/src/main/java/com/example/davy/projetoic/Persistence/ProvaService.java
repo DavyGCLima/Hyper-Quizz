@@ -225,8 +225,7 @@ public class ProvaService {
                 String newToken = jsonToken.getString("newToken");
                 DBService db = new DBService(context);
                 final String[] user = db.getUser();
-                String email = user[1];
-                db.update(email, newToken);
+                db.update(user[DBService.EMAIL], newToken, user[DBService.NAME]);
                 return true;
             }else
                 return false;

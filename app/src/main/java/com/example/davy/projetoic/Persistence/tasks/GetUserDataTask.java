@@ -84,8 +84,8 @@ public class GetUserDataTask extends AsyncTask<String, String[], String> {
                 "          ['"+ mContext.get().getString(R.string.wrong)+"', "+params[1]+"]" +
                 "        ]);" +
                 "        var options = {'title':'"+ mContext.get().getString(R.string.titleGraphRightWrong)+"'," +
-                "                       'width':450," +
-                "                       'height':350," +
+                "                       'width':320," +
+                "                       'height':260," +
                 "                       'titleFontSize':22," +
                 "                       'toltipFontSize':14,"+
                 "                       'legendFontSize':14"+

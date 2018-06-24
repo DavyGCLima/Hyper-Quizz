@@ -49,6 +49,8 @@ public class HomeActivity extends AppCompatActivity
 
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_home);
         TextView emailUser = headerView.findViewById(R.id.email_perfil_nav);
+        TextView nameUser = headerView.findViewById(R.id.nome_perfil_nav);
+        nameUser.setText(user[DBService.NAME]);
         emailUser.setText(user[DBService.EMAIL]);
     }
 
@@ -60,28 +62,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

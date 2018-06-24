@@ -38,7 +38,7 @@ public class UserService {
      * @return retorna verdadeiro caso o acesso seja autorizado, falso se as credencias não possuem cadastro váido
      * @throws Exception retorna um conjunto de escessoões caso ocorra algum erro no processo de conexão
      */
-    public static String valdiarAcesso(String email, String senha) throws Exception {
+    public static String[] valdiarAcesso(String email, String senha, String token) throws Exception {
         String retorno;
 
         HttpURLConnection connection;
@@ -46,6 +46,7 @@ public class UserService {
         //coneção web
         connection = prepareConection();
         connection.addRequestProperty("tipo","login");
+        connection.addRequestProperty("token", token);
         OutputStream out = connection.getOutputStream();
         JSONObject json = new JSONObject();
         json.put("email", email);
@@ -57,8 +58,10 @@ public class UserService {
             throw new Exception("Erro na resposta do servidor");
 
         JSONObject jsonR = new JSONObject(retorno);
-        String token = jsonR.getString("token");
-        return token;
+        String[] response = new String[2];
+        response[0] = jsonR.getString("token");
+        response[1] = jsonR.getString("name");
+        return response;
 
     }
 

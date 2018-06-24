@@ -195,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password, this);
-            mAuthTask.execute((Void) null);
+            mAuthTask.execute();
         }
     }
 
@@ -301,46 +301,51 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, String> {
+    public class UserLoginTask extends AsyncTask<Void, Void, String[]> {
 
         private final String mEmail;
         private final String mPassword;
         Context mContext;
+        DBService db;
 
         UserLoginTask(String email, String password, Context context) {
             mEmail = email;
             mPassword = password;
             mContext = context;
+            db = new DBService(mContext);
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String[] doInBackground(Void... params) {
             try {
                 // Simulate network access.
-                return UserService.valdiarAcesso(mEmail, mPassword);
+                String[] user = db.getUser();
+                String token = null;
+                if(user.length != 0 && mEmail.equals(user[DBService.EMAIL]))
+                    token = user[DBService.TOKEN];
+                return UserService.valdiarAcesso(mEmail, mPassword, token);
             } catch (InterruptedException e) {
-                return "interrupted";
+                return new String[] { "interrupted"};
             } catch (Exception e) {
                 e.printStackTrace();
-                return "error";
+                return new String[] { "error"};
             }
         }
 
         @Override
-        protected void onPostExecute(final String response) {
+        protected void onPostExecute(final String[] response) {
             mAuthTask = null;
             showProgress(false);
 
-            if (!response.equals("interrupted") && !response.equals("error")) {
+            if (!response[0].equals("interrupted") && !response[0].equals("error")) {
                 //realiza login
-                DBService db = new DBService(mContext);
                 String[] user = db.getUser();
                 if(user.length > 0 && !user[2].equals(response))
-                    db.update(mEmail, response);
+                    db.update(mEmail, response[0], response[1]);
                 else if(user.length > 0 && user[1].equals(mEmail) )
-                    db.update(mEmail, response);
+                    db.update(mEmail, response[0], response[1]);
                 else if(user.length == 0)
-                    db.insert(mEmail, response);
+                    db.update(mEmail, response[0], response[1]);
                 finish();
                 UserService.openMainActivity(LoginActivity.this);
             } else {

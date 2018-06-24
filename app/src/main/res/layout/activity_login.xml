@@ -65,23 +65,22 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
+                android:id="@+id/sign_in_button"
+                style="@style/Base.TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textStyle="bold"
-                android:id="@+id/sign_in_button"
                 android:text="@string/logar"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
+                android:textStyle="bold" />
 
             <Button
+                android:id="@+id/btnNovoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:textSize="18sp"
-                android:background="@android:color/transparent"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/linkCadastro"
-                android:id="@+id/btnNovoCadastro"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
