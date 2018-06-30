@@ -17,13 +17,17 @@ import java.util.ArrayList;
 
 public class ListaProvaAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<ArrayList<String>> lista;
+    private ArrayList<String> lista;
     private ListaProvas context;
     private RecyclerViewClickListener mRecyclerViewClickListener;
 
-    public ListaProvaAdapter(ArrayList<ArrayList<String>> lista, ListaProvas context){
+    /*public ListaProvaAdapter(ArrayList<ArrayList<String>> lista, ListaProvas context){
        this.lista = lista;
        this.context = context;
+    }*/
+    public ListaProvaAdapter(ArrayList<String> lista, ListaProvas context){
+        this.lista = lista;
+        this.context = context;
     }
 
     @Override
@@ -36,7 +40,8 @@ public class ListaProvaAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolderProvaAdapter h = (ViewHolderProvaAdapter) holder;
-        h.nome.setText(lista.get(position).get(2));
+        //h.nome.setText(lista.get(position).get(2));
+        h.nome.setText(lista.get(position));
         try{
             YoYo.with(Techniques.FadeInDown)
                     .duration(500)

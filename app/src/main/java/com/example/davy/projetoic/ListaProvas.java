@@ -21,7 +21,7 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    ArrayList<ArrayList<String>> lista;
+    ArrayList<String> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,8 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
         recyclerView = findViewById(R.id.listaProvas);
 
         //set adaper passando dados do bundle do intent
-        lista = (ArrayList)getIntent().getStringArrayListExtra("lista");
+        //lista = (ArrayList)getIntent().getStringArrayListExtra("lista");
+        populateList();
         ListaProvaAdapter adapter = new ListaProvaAdapter(lista,this);
         adapter.setRecyclerViewClickListener(this);
 
@@ -49,10 +50,31 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
         this.recyclerView.setLayoutManager(layout);
     }
 
+    private void populateList() {
+        lista = new ArrayList<>();
+        if(getIntent().getStringExtra("prova").equals("ENAD")){
+            loadListENAD();
+        }else{
+            loadListENEM();
+        }
+    }
+
+    private void loadListENAD(){
+        for(String s : getResources().getStringArray(R.array.listENAD)){
+            lista.add(s);
+        }
+    }
+
+    private void loadListENEM(){
+        for(String s : getResources().getStringArray(R.array.listENEM)){
+            lista.add(s);
+        }
+    }
+
     @Override
     public void onClickListener(View view, int position) {
         //ação de buscar a prova
-        String s = lista.get(position).get(0);
+        String s = lista.get(position);
         new GetProvaTask(this, progressBar).execute(s);
         //Toast.makeText(this, "Selecionado: "+position, Toast.LENGTH_SHORT).show();
     }

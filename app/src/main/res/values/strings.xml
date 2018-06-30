@@ -72,4 +72,22 @@
 
     <string name="passwordLess">O campo de senha deve ter no minimno 6(seis) caracteres</string>
     <string name="fildsPasswordNoMatch">Os campos de senha não combinam</string>
+
+    <string-array name="listENAD">
+        <item>1º Semestre</item>
+        <item>2º Semestre</item>
+        <item>3º Semestre</item>
+        <item>4º Semestre</item>
+        <item>5º Semestre</item>
+        <item>6º Semestre</item>
+        <item>7º Semestre</item>
+        <item>8º Semestre</item>
+    </string-array>
+
+    <string-array name="listENEM">
+        <item>Ciências da Natureza</item>
+        <item>Matemática e suas Tecnologias</item>
+        <item>Linguagens, Códigos e suas Tecnologias</item>
+        <item>Ciências Humanas e suas Tecnologias</item>
+    </string-array>
 </resources>

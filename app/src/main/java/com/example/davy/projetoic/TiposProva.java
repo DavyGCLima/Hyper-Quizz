@@ -1,6 +1,7 @@
 package com.example.davy.projetoic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -45,7 +46,12 @@ public class TiposProva extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Selecione um tipo de prova", Toast.LENGTH_SHORT).show();
                 else {
                     RadioButton btn = grupo.findViewById(grupo.getCheckedRadioButtonId());
-                    new GetListaProvasTask(con, progress).execute((String) btn.getText());
+                    //new GetListaProvasTask(con, progress).execute((String) btn.getText());
+                    Intent it = new Intent(TiposProva.this, ListaProvas.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("prova", (String) btn.getText());
+                    it.putExtras(bundle);
+                    startActivity(it);
                 }
             }
         });
