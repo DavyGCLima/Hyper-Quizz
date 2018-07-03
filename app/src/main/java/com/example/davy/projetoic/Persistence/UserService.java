@@ -198,4 +198,29 @@ public class UserService {
 
         return buffer.toString();
     }
+
+    public static String[] getHistory(String email, String token) throws IOException, JSONException {
+        HttpURLConnection con = prepareConection();
+
+        con.addRequestProperty("tipo", "listarHistorico");
+        con.addRequestProperty("token", token);
+        OutputStream out = con.getOutputStream();
+        JSONObject json = new JSONObject();
+        json.put("email", email);
+        out.write(json.toString().getBytes("UTF-8"));
+
+        String retorno = connect(con);
+        String[] dados = new String[5];
+        if(retorno != null && !retorno.equals("")){
+            JSONObject jsonR = new JSONObject(retorno);
+            dados[0] = jsonR.getString("1");
+            dados[1] = jsonR.getString("2");
+            dados[2] = jsonR.getString("3");
+            dados[3] = jsonR.getString("4");
+            dados[4] = jsonR.getString("5");
+            return dados;
+
+        }else
+            throw new IOException("Erro");
+    }
 }

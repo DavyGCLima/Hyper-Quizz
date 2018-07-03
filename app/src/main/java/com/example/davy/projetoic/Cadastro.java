@@ -343,7 +343,7 @@ public class Cadastro extends AppCompatActivity implements UpdateDate{
                 try {
                     //realizar login
                     DBService db = new DBService(mContext);
-                    db.insert(mEmail, mPassword, mNome);
+                    db.insert(mEmail, null, mNome);
                     UserService.openMainActivity(Cadastro.this);
                 } catch (Exception e) {
                     e.printStackTrace();

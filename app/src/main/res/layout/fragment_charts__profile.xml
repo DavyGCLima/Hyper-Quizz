@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".charts_Profile"
+    tools:context=".Fragment_chart_Profile"
     android:layout_margin="16dp"
     app:cardCornerRadius="12dp"
     android:elevation="8dp">

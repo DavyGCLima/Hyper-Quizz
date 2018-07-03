@@ -23,7 +23,7 @@ public class FinalizaProva extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finaliza_prova);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_gabarito);
         toolbar.setTitle(getIntent().getStringExtra("title"));
         setSupportActionBar(toolbar);
 

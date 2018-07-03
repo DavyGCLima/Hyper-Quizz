@@ -21,7 +21,7 @@ public class DBService {
     public void insert(String email, String token, String name){
         ContentValues values = new ContentValues();
         values.put("email", email);
-        values.put("token", token);
+        values.put("", token);
         values.put("name", name);
 
         db.insert(BDcache.TABLE, null, values);

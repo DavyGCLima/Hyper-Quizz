@@ -22,6 +22,7 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
     RecyclerView recyclerView;
     ProgressBar progressBar;
     ArrayList<String> lista;
+    String tProva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +55,10 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
         lista = new ArrayList<>();
         if(getIntent().getStringExtra("prova").equals("ENAD")){
             loadListENAD();
+            tProva = "ENAD";
         }else{
             loadListENEM();
+            tProva = "ENEM";
         }
     }
 
@@ -75,7 +78,7 @@ public class ListaProvas extends AppCompatActivity implements RecyclerViewClickL
     public void onClickListener(View view, int position) {
         //ação de buscar a prova
         String s = lista.get(position);
-        new GetProvaTask(this, progressBar).execute(s);
+        new GetProvaTask(this, progressBar).execute(new String[]{s});
         //Toast.makeText(this, "Selecionado: "+position, Toast.LENGTH_SHORT).show();
     }
 

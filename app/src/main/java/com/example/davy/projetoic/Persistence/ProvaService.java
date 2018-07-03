@@ -204,7 +204,7 @@ public class ProvaService {
             OutputStream out = conexao.getOutputStream();
             JSONObject json = new JSONObject();
             if(extParam != null) {
-                json.put("idProva", extParam);
+                json.put("tipoProva", extParam);
                 out.write(json.toString().getBytes("UTF-8"));
             }
             retorno = connect(conexao);

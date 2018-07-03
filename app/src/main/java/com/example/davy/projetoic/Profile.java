@@ -25,9 +25,12 @@ public class Profile extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        Fragment fragment = charts_Profile.newInstance(user[DBService.EMAIL], user[DBService.TOKEN]);
 
-        ft.add(R.id.fragment_container, fragment);
+        Fragment fragment = Fragment_chart_Profile.newInstance(user[DBService.EMAIL], user[DBService.TOKEN]);
+        Fragment fragHistory = Fragment_History.newInstance(user[DBService.EMAIL], user[DBService.TOKEN]);
+
+        ft.add(R.id.fragment_container1, fragment, "frag1");
+        ft.add(R.id.fragment_container2, fragHistory, "frag2");
         ft.commit();
     }
 }

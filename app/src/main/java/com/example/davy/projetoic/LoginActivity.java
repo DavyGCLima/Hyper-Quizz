@@ -345,7 +345,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 else if(user.length > 0 && user[1].equals(mEmail) )
                     db.update(mEmail, response[0], response[1]);
                 else if(user.length == 0)
-                    db.update(mEmail, response[0], response[1]);
+                    db.insert(mEmail, response[0], response[1]);
                 finish();
                 UserService.openMainActivity(LoginActivity.this);
             } else {
