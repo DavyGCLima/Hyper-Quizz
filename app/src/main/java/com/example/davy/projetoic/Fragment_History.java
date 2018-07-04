@@ -108,34 +108,37 @@ public class Fragment_History extends Fragment {
         }
 
         private String biuldGraph(String[] params) {
-            String script = "  <html>" +
+            String script = "    <html>" +
                     "  <head>" +
                     "    <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>" +
-                    "    <script type=\"text/javascript\">" +
-                    "      google.charts.load('current', {'packages':['corechart']});" +
+                    "    <script type=\"text/javascript\">  " +
+                    "       google.charts.load('current', {'packages':['line']});" +
                     "      google.charts.setOnLoadCallback(drawChart);" +
-                    "      function drawChart() {" +
-                    "        var data = google.visualization.arrayToDataTable();" +
-                    "          data.addColumn('number', 'Provas');" +
-                    "          data.addColumn('number', 'Acertos');" +
-                    "          data.addRows("+
-                    "          ['1',  "+params[0]+"]," +
-                    "          ['2',  "+params[1]+"]," +
-                    "          ['3',  "+params[2]+"]," +
-                    "          ['4',  "+params[3]+"]" +
-                    "          ['5',  "+params[4]+"]);"+
-                    "        var options = {" +
-                    "          title: 'Historico'," +
-                    "          curveType: 'function'," +
-                    "          legend: { position: 'bottom' }" +
-                    "        };" +
-                    "        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));" +
-                    "        chart.draw(data, options);" +
-                    "      }" +
-                    "    </script>" +
+                    "    function drawChart() {" +
+                    "      var data = new google.visualization.DataTable();" +
+                    "      data.addColumn('number', 'Provas');" +
+                    "      data.addColumn('number', 'Acertos');" +
+                    "      data.addRows([" +
+                    "        [1,  "+params[0]+"]," +
+                    "        [2,  "+params[1]+"]," +
+                    "        [3,  "+params[2]+"]," +
+                    "        [4,  "+params[3]+"]," +
+                    "        [5,  "+params[4]+"]," +
+                    "      ]);" +
+                    "      var options = {" +
+                    "        chart: {" +
+                    "          title: 'Histórico de acertos'," +
+                    "        }," +
+                    "        width: 360," +
+                    "        height: 290" +
+                    "      };" +
+                    "      var chart = new google.charts.Line(document.getElementById('linechart_material'));" +
+                    "      chart.draw(data, google.charts.Line.convertOptions(options));" +
+                    "    }" +
+                    "</script>" +
                     "  </head>" +
                     "  <body>" +
-                    "    <div id=curve_chart style=width: 320px; height: 260px></div>" +
+                    "    <div id=linechart_material style=width: 360px; height: 290px></div>" +
                     "  </body>" +
                     "</html>";
             return script;

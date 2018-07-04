@@ -3,6 +3,8 @@ package com.example.davy.projetoic;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +55,20 @@ public class HomeActivity extends AppCompatActivity
         TextView nameUser = headerView.findViewById(R.id.nome_perfil_nav);
         nameUser.setText(user[DBService.NAME]);
         emailUser.setText(user[DBService.EMAIL]);
+
+        Fragment fragHistory = Fragment_History.newInstance(user[DBService.EMAIL], user[DBService.TOKEN]);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.container_graph_home, fragHistory);
+        ft.commit();
+
+        Button btnIniciarTeste = findViewById(R.id.btn_iniciar_teste);
+        btnIniciarTeste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openQuestsActivity();
+            }
+        });
     }
 
     @Override
@@ -74,10 +91,7 @@ public class HomeActivity extends AppCompatActivity
             openProfileActivity();
         } else if (id == R.id.quests_drawer) {
             openQuestsActivity();
-        } else if (id == R.id.nav_share) {
-
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
